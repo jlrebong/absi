@@ -33,10 +33,6 @@ export class PhoneTableComponent implements OnInit {
     return this.form.controls["phones"] as FormArray;
   }
 
-  // get phonesControls() {
-  //   return (this.form.controls["phones"] as FormArray).controls as FormGroup[];
-  // }
-
   addPhone() {
     const PhoneForm = this.fb.group<Phone>({
       type: "",

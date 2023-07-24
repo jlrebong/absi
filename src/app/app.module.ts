@@ -13,6 +13,7 @@ import { PhoneFormComponent } from './core/forms/phone-form/phone-form.component
 import { PhoneTableComponent } from './core/forms/phone-table/phone-table.component';
 import { ContactsTableComponent } from './core/forms/contacts-table/contacts-table.component';
 import { SummaryComponent } from './core/forms/summary/summary.component';
+import { AddcontactComponent } from './core/dialog/addcontact/addcontact.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +24,14 @@ import { SummaryComponent } from './core/forms/summary/summary.component';
     PhoneFormComponent,
     PhoneTableComponent,
     ContactsTableComponent,
-    SummaryComponent
+    SummaryComponent,
+    AddcontactComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     ReactiveFormsModule,
     FormsModule,
   ],

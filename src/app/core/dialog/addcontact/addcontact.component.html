@@ -1,0 +1,11 @@
+<mat-dialog-content class="add-contact-container">
+    <app-information [labels]="labels"></app-information>
+    <app-phone-table></app-phone-table>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-stroked-button color="warn" (click)="close()">
+        <mat-icon>close</mat-icon>Close</button>
+    <button mat-stroked-button color="primary" (click)="save()">
+        <mat-icon>save</mat-icon>Save</button>
+</mat-dialog-actions>

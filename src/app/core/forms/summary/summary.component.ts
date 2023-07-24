@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-summary',
@@ -44,6 +45,12 @@ export class SummaryComponent {
       },
     ]
   };
+
+  form = this.fb.group({
+    agree: false
+  });
+
+  constructor(private fb: FormBuilder) {}
 
 
 }
