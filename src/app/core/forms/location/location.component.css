@@ -1,0 +1,45 @@
+.location-form {
+    border: 3px solid #AFE5F4;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 500px;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.city-zip {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+.location-title {
+    color:darkgray;
+}
+
+
+/* Common */
+input,
+textarea {
+    padding: 10px;
+    outline:none;
+}
+
+/* default and hover color */
+mat-form-field {
+    color:darkgray;
+    padding: 0;
+}
+
+.mat-mdc-form-field-input-control::placeholder{
+    color: black;
+}
+
+.required {
+    color: red;
+}
+
+mat-hint {
+    font-size: 12px;
+}

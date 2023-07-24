@@ -1,0 +1,56 @@
+.container {
+    border: 3px solid #AFE5F4;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 500px;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 3fr 1fr;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 10px 0;
+    gap: 5px;
+}
+
+.table-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 3fr 1fr;
+    padding: 10px 0;
+    gap: 5px;
+}
+
+
+button {
+    justify-self: end;
+}
+
+
+/* Common */
+input,
+textarea {
+    padding: 10px;
+    outline:none;
+}
+
+/* default and hover color */
+mat-form-field {
+    color:darkgray;
+    padding: 0;
+}
+
+.mat-mdc-form-field-input-control::placeholder{
+    color: black;
+}
+
+.required {
+    color: red;
+}
+
+mat-hint {
+    font-size: 12px;
+}

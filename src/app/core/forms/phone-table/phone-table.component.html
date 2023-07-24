@@ -1,0 +1,54 @@
+
+
+
+<div class="container" [formGroup]="form" >
+    <button mat-raised-button color="primary" (click)="addPhone()">
+        <mat-icon>add</mat-icon>Add Row
+    </button>
+
+    <div class="table-header">
+        <div class="table-header-cell"></div>
+        <div class="table-header-cell">#</div>
+        <div class="table-header-cell">Type</div>
+        <div class="table-header-cell">Phone Number</div>
+        <div class="table-header-cell">Status</div>
+    </div>
+
+    <ng-container formArrayName="phones">
+        <ng-container *ngFor="let phoneForm of phones.controls; let i = index">
+            <div class="table-body" [formGroupName]="i">
+                <div><mat-icon>remove_circle</mat-icon></div>
+                <div>{{i}}</div>
+
+                <mat-form-field appearance="outline">
+                    <mat-select formControlName="type">
+                        <mat-option *ngFor="let t of typeList" [value]="t.id">
+                            {{t.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput
+                            formControlName="number"
+                            placeholder="Number">
+                </mat-form-field>   
+
+                <mat-form-field appearance="outline" *ngIf="false">
+                    <input matInput
+                            formControlName="status"
+                            placeholder="status" #status>
+                </mat-form-field>   
+                <div>NEW</div>
+            </div>
+        </ng-container>
+    </ng-container>
+
+
+    
+
+    
+    
+  
+   
+    {{form.value | json}}
+</div>

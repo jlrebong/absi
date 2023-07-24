@@ -1,0 +1,21 @@
+<form [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
+    
+    <mat-form-field appearance="outline">
+        <mat-label>Client Industry</mat-label>
+        <mat-select formControlName="type">
+            <mat-option *ngFor="let t of typeList" [value]="t.id">
+                {{t.title}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Phone No.</mat-label>
+        <input matInput placeholder="Phone No." formControlName="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <input matInput placeholder="Status" formControlName="status" >
+    </mat-form-field>
+
+</form>

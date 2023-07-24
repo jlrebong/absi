@@ -1,0 +1,36 @@
+<form class="information-form" [formGroup]="form" *ngIf="labels.status">
+    <mat-radio-group aria-label="Select an option" formControlName="status">
+        <mat-label>{{labels.status.label}}</mat-label>
+        <mat-radio-button value="{{statusLabel.id}}" *ngFor="let statusLabel of labels.status.values;let i=index">{{statusLabel.label}}</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Adjuster Name</mat-label>
+        <input matInput placeholder="Adjuster Name" disabled>
+    </mat-form-field>
+
+    <mat-form-field [class.required]="checkRequired('code')" 
+        appearance="outline" [style.width.px]=220 
+        *ngIf="labels.code">
+        <mat-label>{{labels.code}}</mat-label>
+        <input matInput placeholder="{{labels.code}} *" 
+        maxlength="20" formControlName="code" 
+        required>
+        <mat-hint align="end">0/20</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field  [class.required]="checkRequired('name')" 
+        appearance="outline" *ngIf="labels.name">
+        <mat-label>{{labels.name}}</mat-label>
+        <input matInput placeholder="{{labels.name}} *" 
+         maxlength="255"  formControlName="name">
+        <mat-hint align="end">0/255</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="labels.specialty">
+        <mat-label>{{labels.specialty}}</mat-label>
+        <textarea matInput placeholder="{{labels.specialty}}" maxlength="500" formControlName="specialty"></textarea>
+        <mat-hint align="end">0/500</mat-hint>
+    </mat-form-field>
+
+</form>
