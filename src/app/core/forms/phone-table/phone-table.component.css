@@ -1,28 +1,21 @@
-.container {
-    border: 3px solid #AFE5F4;
-    padding: 20px 30px;
-    border-radius: 10px;
-
+.phone-table-container {
     display:flex;
     flex-direction:column;
 }
 
-.table-header {
+.table-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 3fr 1fr;
+    gap: 5px;
+}
+
+.table-header {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     padding: 10px 0;
-    gap: 5px;
-    
     margin-bottom: 10px;
 }
 
-.table-body {
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 3fr 1fr;
-    gap: 5px;
-}
 
 .add_row {
     align-self: end;
@@ -33,12 +26,6 @@
     justify-self: center;
     padding-top: 10px;
 }
-
-.remove_icon {
-    color:red;
-    cursor:pointer;
-}
-
 
 button {
     justify-self: end;
@@ -66,11 +53,3 @@ mat-form-field {
     color: red;
 }
 
-mat-hint {
-    font-size: 12px;
-}
-
-mat-select {
-    color: black;
-    padding: 10px;
-}

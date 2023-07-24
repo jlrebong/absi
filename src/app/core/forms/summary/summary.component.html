@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="main-title">{{summary.main_title}}</div>
+    <div class="section-container">
+        <div class="section" *ngFor="let d of summary.sections; let i = index;">
+            <div class="title" [class.sameColor]="!d.title">{{d.title || "_"}}</div>
+            <div class="elements" *ngFor="let e of d.elements;">
+                <div class="label">{{e.label}}</div>
+                <div>:</div>
+                <div class="value">{{e.value}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="info_correct center">
+        <mat-form-field appearance="outline">
+            <mat-checkbox labelPosition="after">I hereby certify that I have reviewed 
+                and checked all the details and that 
+                the information is correct
+            </mat-checkbox>
+        </mat-form-field>
+    </div>
+</div>

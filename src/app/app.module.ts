@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocationComponent } from './core/forms/location/location.component';
 import { PhoneFormComponent } from './core/forms/phone-form/phone-form.component';
 import { PhoneTableComponent } from './core/forms/phone-table/phone-table.component';
+import { ContactsTableComponent } from './core/forms/contacts-table/contacts-table.component';
+import { SummaryComponent } from './core/forms/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { PhoneTableComponent } from './core/forms/phone-table/phone-table.compon
     InformationComponent,
     LocationComponent,
     PhoneFormComponent,
-    PhoneTableComponent
+    PhoneTableComponent,
+    ContactsTableComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,

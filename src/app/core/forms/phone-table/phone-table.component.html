@@ -1,22 +1,22 @@
 
 
 
-<div class="container" [formGroup]="form" >
+<div class="container phone-table-container" [formGroup]="form" >
     <button class="add_row" mat-raised-button color="primary" (click)="addPhone()">
         <mat-icon>add</mat-icon>Add Row
     </button>
 
-    <div class="table-header">
-        <div class="table-header-cell"></div>
-        <div class="table-header-cell">#</div>
-        <div class="table-header-cell">Type</div>
-        <div class="table-header-cell">Phone Number</div>
-        <div class="table-header-cell">Status</div>
+    <div class="table-header table-grid">
+        <div></div>
+        <div>#</div>
+        <div>Type</div>
+        <div>Phone Number</div>
+        <div>Status</div>
     </div>
 
     <ng-container formArrayName="phones">
         <ng-container *ngFor="let phoneForm of phones.controls; let i = index">
-            <div class="table-body" [formGroupName]="i">
+            <div class="table-grid" [formGroupName]="i">
                 <div class="remove_icon" (click)="deletePhone(i)"><mat-icon>remove_circle</mat-icon></div>
                 <div>{{i + 1}}</div>
 

@@ -1,0 +1,36 @@
+
+<div class="container contacts-table-container">
+    <button class="add_row" mat-raised-button color="primary">
+        <mat-icon>add</mat-icon>Add Row
+    </button>
+
+    <div class="table-header table-grid">
+        <div></div>
+        <div>#</div>
+        <div>Full Name</div>
+        <div>Designation</div>
+        <div>Email Address</div>
+        <div>Group Mail Address</div>
+        <div>Date of Birth</div>
+        <div>Contact No./s</div>
+        <div>Primary</div>
+        <div>Status</div>
+    </div>
+
+    <ng-container *ngFor="let contact of contacts; let i = index">
+        <div class="table-grid">
+            <div class="remove_icon" (click)="null"><mat-icon>remove_circle</mat-icon></div>
+            <div>{{i + 1}}</div>
+            <div>{{contact.fullname}}</div>
+            <div>{{contact.designation}}</div>
+            <div>{{contact.email}}</div>
+            <div>{{contact.groupemail}}</div>
+            <div>{{contact.dob}}</div>
+            <div>{{contact.contactno}}</div>
+            <div>{{contact.primary==true? "Yes" : "No"}}</div>
+            <div>{{contact.status}}</div>
+        </div>
+    </ng-container>
+
+
+</div>

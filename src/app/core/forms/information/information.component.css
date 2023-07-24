@@ -1,11 +1,17 @@
 .information-form {
-    border: 3px solid #AFE5F4;
+    /* border: 3px solid #AFE5F4;
     padding: 20px 30px;
     border-radius: 10px;
-    width: 500px;
+    width: 500px; */
 
     display:flex;
     flex-direction:column;
+}
+
+mat-form-field.adjuster_name_title {
+    background-color: cyan;
+    margin-bottom:16px;
+    border-radius:5px;
 }
 
 
@@ -14,25 +20,4 @@ input,
 textarea {
     padding: 10px;
     outline:none;
-}
-
-/* default and hover color */
-mat-form-field {
-    color:darkgray;
-    padding: 0;
-}
-
-.mat-mdc-form-field-input-control::placeholder{
-    color: black;
-}
-
-.required {
-    color: red;
-}
-
-mat-form-field.mat-form-field-disabled {
-    color: lightgray;
-}
-mat-hint {
-    font-size: 12px;
 }
