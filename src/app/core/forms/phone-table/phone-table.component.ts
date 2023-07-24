@@ -38,13 +38,17 @@ export class PhoneTableComponent implements OnInit {
   // }
 
   addPhone() {
-    const PhoneForm = this.fb.group({
+    const PhoneForm = this.fb.group<Phone>({
       type: "",
-      number: "",
+      number: null,
       status: "NEW" 
     });
     this.phones.push(PhoneForm);
     console.log(this.phones);
+  }
+
+  getStatus(idx) {
+    return this.phones.at(idx).value.status;
   }
 
   deletePhone(idx: number) {

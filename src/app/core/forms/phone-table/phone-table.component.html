@@ -2,7 +2,7 @@
 
 
 <div class="container" [formGroup]="form" >
-    <button mat-raised-button color="primary" (click)="addPhone()">
+    <button class="add_row" mat-raised-button color="primary" (click)="addPhone()">
         <mat-icon>add</mat-icon>Add Row
     </button>
 
@@ -17,8 +17,8 @@
     <ng-container formArrayName="phones">
         <ng-container *ngFor="let phoneForm of phones.controls; let i = index">
             <div class="table-body" [formGroupName]="i">
-                <div><mat-icon>remove_circle</mat-icon></div>
-                <div>{{i}}</div>
+                <div class="remove_icon" (click)="deletePhone(i)"><mat-icon>remove_circle</mat-icon></div>
+                <div>{{i + 1}}</div>
 
                 <mat-form-field appearance="outline">
                     <mat-select formControlName="type">
@@ -38,17 +38,8 @@
                             formControlName="status"
                             placeholder="status" #status>
                 </mat-form-field>   
-                <div>NEW</div>
+                <div class="phone_status">{{getStatus(i)}}</div>
             </div>
         </ng-container>
     </ng-container>
-
-
-    
-
-    
-    
-  
-   
-    {{form.value | json}}
 </div>

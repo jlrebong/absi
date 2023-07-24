@@ -13,7 +13,7 @@ export class InformationComponent implements OnInit{
   labels;
 
   form = this.fb.group({
-    status: ['1'],
+    status: ['new'],
     code: ["", Validators.required],
     name: ["",  Validators.required],
     specialty: ""

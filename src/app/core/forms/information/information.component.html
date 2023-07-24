@@ -5,8 +5,7 @@
     </mat-radio-group>
 
     <mat-form-field appearance="outline">
-        <mat-label>Adjuster Name</mat-label>
-        <input matInput placeholder="Adjuster Name" disabled>
+        <input matInput placeholder="{{form.get('name').value || labels.name}}" disabled>
     </mat-form-field>
 
     <mat-form-field [class.required]="checkRequired('code')" 
@@ -26,6 +25,7 @@
          maxlength="255"  formControlName="name">
         <mat-hint align="end">0/255</mat-hint>
     </mat-form-field>
+    
 
     <mat-form-field appearance="outline" *ngIf="labels.specialty">
         <mat-label>{{labels.specialty}}</mat-label>

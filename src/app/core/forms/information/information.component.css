@@ -30,6 +30,9 @@ mat-form-field {
     color: red;
 }
 
+mat-form-field.mat-form-field-disabled {
+    color: lightgray;
+}
 mat-hint {
     font-size: 12px;
 }

@@ -2,7 +2,6 @@
     border: 3px solid #AFE5F4;
     padding: 20px 30px;
     border-radius: 10px;
-    width: 500px;
 
     display:flex;
     flex-direction:column;
@@ -15,13 +14,29 @@
     border-bottom: 2px solid black;
     padding: 10px 0;
     gap: 5px;
+    
+    margin-bottom: 10px;
 }
 
 .table-body {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 3fr 1fr;
-    padding: 10px 0;
     gap: 5px;
+}
+
+.add_row {
+    align-self: end;
+    margin-bottom: 10px;
+}
+
+.phone_status {
+    justify-self: center;
+    padding-top: 10px;
+}
+
+.remove_icon {
+    color:red;
+    cursor:pointer;
 }
 
 
@@ -53,4 +68,9 @@ mat-form-field {
 
 mat-hint {
     font-size: 12px;
+}
+
+mat-select {
+    color: black;
+    padding: 10px;
 }
