@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./contact-details.component.css'],
 })
 export class ContactDetailsComponent implements OnInit {
+  @Input() labels;
   contactDetailsForm = this.fb.group({
     contactName: '',
     status: ['new'],
@@ -39,7 +40,5 @@ export class ContactDetailsComponent implements OnInit {
     // this.contactDetailsForm
     //   .get('salutation')
     //   ?.valueChanges.subscribe((id) => console.log(id));
-
-    console.log('rendered');
   }
 }

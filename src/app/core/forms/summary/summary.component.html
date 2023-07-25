@@ -10,12 +10,10 @@
             </div>
         </div>
     </div>
-    <div class="info_correct center">
-        <mat-form-field appearance="outline">
-            <mat-checkbox labelPosition="after">I hereby certify that I have reviewed 
-                and checked all the details and that 
-                the information is correct
-            </mat-checkbox>
-        </mat-form-field>
+    <div class="info_correct center" [formGroup]="form">
+        <mat-checkbox labelPosition="after" formControlName="agree">I hereby certify that I have reviewed 
+            and checked all the details and that 
+            the information is correct
+        </mat-checkbox>
     </div>
 </div>

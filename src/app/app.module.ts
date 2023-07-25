@@ -14,6 +14,7 @@ import { PhoneTableComponent } from './core/forms/phone-table/phone-table.compon
 import { ContactsTableComponent } from './core/forms/contacts-table/contacts-table.component';
 import { SummaryComponent } from './core/forms/summary/summary.component';
 import { ContactDetailsComponent } from './core/forms/contact-details/contact-details.component';
+import { AddcontactComponent } from './core/dialog/addcontact/addcontact.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,13 @@ import { ContactDetailsComponent } from './core/forms/contact-details/contact-de
     ContactsTableComponent,
     SummaryComponent,
     ContactDetailsComponent,
+    AddcontactComponent,
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     ReactiveFormsModule,
     FormsModule,
   ],
