@@ -21,8 +21,8 @@ export var LABELS = {
         { id: 'inactive', label: 'Inactive' },
       ],
     },
-    code: 'Bank Code',
-    name: 'Bank Name',
+    code: 'Bank Account Code',
+    name: 'Bank Account Name',
   },
   // contactDetails: {
   //   contactName: 'Contact Name',

@@ -10,7 +10,7 @@ export class ContactDetailsComponent implements OnInit {
   @Input() labels;
   contactDetailsForm = this.fb.group({
     contactName: '',
-    status: ['new'],
+    status: ['NEW'],
     lastName: ['', Validators.required],
     designation: ['', Validators.required],
     firstName: ['', Validators.required],
@@ -19,7 +19,7 @@ export class ContactDetailsComponent implements OnInit {
     salutation: ['', Validators.required],
     suffix: '',
     birthDate: '',
-    extraEmail: '',
+    extraEmail: [[''], Validators.email],
   });
 
   constructor(private fb: FormBuilder) {}
@@ -37,8 +37,8 @@ export class ContactDetailsComponent implements OnInit {
     // this.contactDetailsForm
     //   .get('email')
     //   ?.valueChanges.subscribe((id) => console.log(id));
-    // this.contactDetailsForm
-    //   .get('salutation')
-    //   ?.valueChanges.subscribe((id) => console.log(id));
+    this.contactDetailsForm
+      .get('birthDate')
+      ?.valueChanges.subscribe((id) => console.log(id));
   }
 }
