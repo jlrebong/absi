@@ -96,13 +96,19 @@
         <mat-label>Date of Birth</mat-label>
         <input
           matInput
-          placeholder="Date of Birth"
+          [matDatepicker]="picker"
           formControlName="birthDate"
+          readonly
         />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
 
-    <mat-form-field appearance="outline" [style.width.px]="420">
+    <mat-form-field appearance="outline" [style.width.px]="325">
       <mat-label>Group of Email Address</mat-label>
       <textarea
         matInput

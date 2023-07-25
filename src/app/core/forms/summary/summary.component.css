@@ -17,14 +17,14 @@
 }
 
 .title {
-    background-color: yellow;
+    background-color: #fefed5;
     padding: 10px 5px;
     font-weight: bold;
    
 }
 
 .sameColor {
-    color: yellow;
+    color: #fefed5;
 }
 
 .elements {
