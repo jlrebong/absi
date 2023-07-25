@@ -1,0 +1,24 @@
+@import "../core/common.css";
+
+.information-container {
+    padding: 20px;
+    width: 500px; 
+}
+
+
+.location-container {
+    width: 1280px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 10px;
+}
+
+.contact-table-container {
+    width: 1280px;
+}
+
+.summary {
+    margin: 20px;
+}
+
+
