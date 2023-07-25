@@ -1,45 +1,50 @@
+<div class="container phone-table-container" [formGroup]="form">
+  <button
+    class="add_row"
+    mat-raised-button
+    color="primary"
+    (click)="addPhone()"
+  >
+    <mat-icon>add_circle</mat-icon>Add Row
+  </button>
 
+  <div class="table-header table-grid">
+    <div></div>
+    <div>#</div>
+    <div>Type</div>
+    <div>Phone Number</div>
+    <div>Status</div>
+  </div>
 
+  <ng-container formArrayName="phones">
+    <ng-container *ngFor="let phoneForm of phones.controls; let i = index">
+      <div class="table-grid" [formGroupName]="i">
+        <div class="remove_icon" (click)="deletePhone(i)">
+          <mat-icon>remove_circle</mat-icon>
+        </div>
+        <div>{{ i + 1 }}</div>
 
-<div class="container phone-table-container" [formGroup]="form" >
-    <button class="add_row" mat-raised-button color="primary" (click)="addPhone()">
-        <mat-icon>add</mat-icon>Add Row
-    </button>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let t of typeList" [value]="t.id">
+              {{ t.title }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput formControlName="number" placeholder="Number" />
+        </mat-form-field>
 
-    <div class="table-header table-grid">
-        <div></div>
-        <div>#</div>
-        <div>Type</div>
-        <div>Phone Number</div>
-        <div>Status</div>
-    </div>
-
-    <ng-container formArrayName="phones">
-        <ng-container *ngFor="let phoneForm of phones.controls; let i = index">
-            <div class="table-grid" [formGroupName]="i">
-                <div class="remove_icon" (click)="deletePhone(i)"><mat-icon>remove_circle</mat-icon></div>
-                <div>{{i + 1}}</div>
-
-                <mat-form-field appearance="outline">
-                    <mat-select formControlName="type">
-                        <mat-option *ngFor="let t of typeList" [value]="t.id">
-                            {{t.title}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <input matInput
-                            formControlName="number"
-                            placeholder="Number">
-                </mat-form-field>   
-
-                <mat-form-field appearance="outline" *ngIf="false">
-                    <input matInput
-                            formControlName="status"
-                            placeholder="status" #status>
-                </mat-form-field>   
-                <div class="phone_status">{{getStatus(i)}}</div>
-            </div>
-        </ng-container>
+        <mat-form-field appearance="outline" *ngIf="false">
+          <input
+            matInput
+            formControlName="status"
+            placeholder="status"
+            #status
+          />
+        </mat-form-field>
+        <div class="phone_status">{{ getStatus(i) }}</div>
+      </div>
     </ng-container>
+  </ng-container>
 </div>

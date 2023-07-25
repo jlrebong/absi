@@ -1,0 +1,115 @@
+<div class="container">
+  <form class="contact-details-form" [formGroup]="contactDetailsForm">
+    <div class="contact-name-status-highlighted">
+      <mat-form-field class="highlighted" appearance="outline">
+        <mat-label>Contact Name</mat-label>
+        <input
+          matInput
+          placeholder="Contact Name"
+          maxlength="40"
+          formControlName="contactName"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="highlighted" appearance="outline">
+        <mat-label>Status</mat-label>
+        <input
+          matInput
+          placeholder="NEW"
+          maxlength="40"
+          formControlName="status"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="lastName-designation">
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          placeholder="Last Name"
+          maxlength="40"
+          formControlName="lastName"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Designation</mat-label>
+        <input
+          matInput
+          placeholder="Designation"
+          maxlength="10"
+          formControlName="designation"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="first-initial-email">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          placeholder="First Name"
+          maxlength="20"
+          formControlName="firstName"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>M.I</mat-label>
+        <input
+          matInput
+          placeholder="M.I"
+          maxlength="5"
+          formControlName="middleInitial"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email Address</mat-label>
+        <input
+          matInput
+          placeholder="Email Address"
+          maxlength="50"
+          formControlName="email"
+        />
+      </mat-form-field>
+    </div>
+    <div class="salutation-suffix-birthdate">
+      <mat-form-field appearance="outline">
+        <mat-label>Salutation</mat-label>
+        <input
+          matInput
+          placeholder="Salutation"
+          maxlength="5"
+          formControlName="salutation"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Suffix</mat-label>
+        <input
+          matInput
+          placeholder="Suffix"
+          maxlength="5"
+          formControlName="suffix"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Date of Birth</mat-label>
+        <input
+          matInput
+          placeholder="Date of Birth"
+          formControlName="birthDate"
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" [style.width.px]="420">
+      <mat-label>Group of Email Address</mat-label>
+      <textarea
+        matInput
+        placeholder="Group of Email Address"
+        maxlength="40"
+        formControlName="extraEmail"
+      ></textarea>
+    </mat-form-field>
+  </form>
+</div>

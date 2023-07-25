@@ -13,6 +13,7 @@ import { PhoneFormComponent } from './core/forms/phone-form/phone-form.component
 import { PhoneTableComponent } from './core/forms/phone-table/phone-table.component';
 import { ContactsTableComponent } from './core/forms/contacts-table/contacts-table.component';
 import { SummaryComponent } from './core/forms/summary/summary.component';
+import { ContactDetailsComponent } from './core/forms/contact-details/contact-details.component';
 import { AddcontactComponent } from './core/dialog/addcontact/addcontact.component';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AddcontactComponent } from './core/dialog/addcontact/addcontact.compone
     PhoneTableComponent,
     ContactsTableComponent,
     SummaryComponent,
-    AddcontactComponent
+    ContactDetailsComponent,
+    AddcontactComponent,
   ],
   imports: [
     MaterialModule,
@@ -36,6 +38,6 @@ import { AddcontactComponent } from './core/dialog/addcontact/addcontact.compone
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
