@@ -13,6 +13,7 @@ import { PhoneFormComponent } from './core/forms/phone-form/phone-form.component
 import { PhoneTableComponent } from './core/forms/phone-table/phone-table.component';
 import { ContactsTableComponent } from './core/forms/contacts-table/contacts-table.component';
 import { SummaryComponent } from './core/forms/summary/summary.component';
+import { ContactDetailsComponent } from './core/forms/contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SummaryComponent } from './core/forms/summary/summary.component';
     PhoneFormComponent,
     PhoneTableComponent,
     ContactsTableComponent,
-    SummaryComponent
+    SummaryComponent,
+    ContactDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,6 @@ import { SummaryComponent } from './core/forms/summary/summary.component';
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
