@@ -1,10 +1,11 @@
 <div class="information-container">
-  <app-information [labels]="labels"></app-information>
+  <app-information [labels]="labels" [initialValue]="adjuster.information" (data)="setInformation($event)" ></app-information>
+  external: {{adjuster | json}}
 </div>
 
 <div class="location-container">
-  <app-location></app-location>
-  <app-phone-table></app-phone-table>
+  <app-location [initialValue]="adjuster.location" (data)="setLocation($event)"></app-location>
+  <app-phone-table [initialValue]="adjuster.phones" (data)="setPhones($event)"></app-phone-table>
 </div>
 
 <div class="contact-table-container">

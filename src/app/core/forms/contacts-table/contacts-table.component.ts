@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddcontactComponent } from '../../dialog/addcontact/addcontact.component';
 
@@ -8,6 +8,12 @@ import { AddcontactComponent } from '../../dialog/addcontact/addcontact.componen
   styleUrls: ['./contacts-table.component.css']
 })
 export class ContactsTableComponent {
+  @Input()
+  initialValue;
+
+  @Output()
+  data = new EventEmitter();
+  
   // Should be from service
   contacts = [
     {

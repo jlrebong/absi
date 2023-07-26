@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Phone } from '../../models/phone-model';
 
@@ -8,25 +8,46 @@ import { Phone } from '../../models/phone-model';
   styleUrls: ['./phone-table.component.css']
 })
 export class PhoneTableComponent implements OnInit {
-  form = this.fb.group({
-    phones: this.fb.array([])
-  });
+  @Input()
+  initialValue;
+
+  @Output()
+  data = new EventEmitter();
+
+  form: FormGroup;
 
   typeList = [
-    {id: "1", title:'Mobile' },
-    {id: "2", title:'Home' },
-    {id: "3", title:'Work' },
-    {id: "4", title:'Main' },
-    {id: "5", title:'Work Fax' },
-    {id: "6", title:'Home Fax' },
-    {id: "7", title:'Pager' },
-    {id: "8", title:'Other' },
+    {id: "Mobile", title:'Mobile' },
+    {id: "Home", title:'Home' },
+    {id: "Work", title:'Work' },
+    {id: "Main", title:'Main' },
+    {id: "Work Fax", title:'Work Fax' },
+    {id: "Home Fax", title:'Home Fax' },
+    {id: "Pager", title:'Pager' },
+    {id: "Other", title:'Other' },
   ];
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    console.log(this.form);
+
+    console.log(this.initialValue);
+
+    this.form = this.fb.group({
+      phones: this.fb.array([])
+    });
+
+    this.initialValue.forEach(e => {
+      const PhoneForm = this.fb.group({
+        lineNo: e.lineNo,
+        type: e.type,
+        number: [e.number, Validators.pattern('^[0-9]+$')],
+        status: e.status 
+      });
+      this.phones.push(PhoneForm);
+    });
+
+    this.form.valueChanges.subscribe(e => this.data.emit(this.phones));
   }
 
   get phones() {
@@ -34,12 +55,14 @@ export class PhoneTableComponent implements OnInit {
   }
 
   addPhone() {
-    const PhoneForm = this.fb.group<Phone>({
+    const PhoneForm = this.fb.group({
+      lineNo: null,
       type: "",
-      number: null,
+      number: [null, Validators.pattern('^[0-9]+$')],
       status: "NEW" 
     });
     this.phones.push(PhoneForm);
+
     console.log(this.phones);
   }
 

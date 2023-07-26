@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit,Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-information',
@@ -10,23 +10,33 @@ export class InformationComponent implements OnInit {
   @Input()
   labels;
 
-  form = this.fb.group({
-    status: ['new'],
-    code: ['', Validators.required],
-    name: ['', Validators.required],
-    specialty: '',
-  });
+  @Input()
+  initialValue;
+
+  @Output()
+  data = new EventEmitter();
+
+  form: FormGroup;
 
   constructor(private fb: FormBuilder) {}
+
   ngOnInit(): void {
-    this.form.get('status')?.valueChanges.subscribe((id) => console.log(id));
-    this.form.get('code')?.valueChanges.subscribe((id) => console.log(id));
-    this.form.get('name')?.valueChanges.subscribe((id) => console.log(id));
-    this.form.get('specialty')?.valueChanges.subscribe((id) => console.log(id));
+    this.form = this.fb.group({
+      status: [this.initialValue.status],
+      code: [this.initialValue.code, Validators.required],
+      name: [this.initialValue.name, Validators.required],
+      specialty: this.initialValue.specialty,
+    });
+    
+    this.form.valueChanges.subscribe(e => this.data.emit(e));
   }
 
   checkRequired(type): boolean {
     let code = this.form.get(type);
     return code.touched && !code.valid;
   }
+
+  
+
+  
 }
