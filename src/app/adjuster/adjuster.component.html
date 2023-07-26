@@ -1,5 +1,6 @@
 <div class="information-container">
-  <app-information [labels]="labels"></app-information>
+  <app-information [labels]="labels" prefix="adjuster" [(ngModel)]="adjuster" name="adjuster" ></app-information>
+  external: {{adjuster | json}}
 </div>
 
 <div class="location-container">

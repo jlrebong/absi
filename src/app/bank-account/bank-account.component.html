@@ -1,5 +1,6 @@
 <div class="information-container">
-  <app-information [labels]="labels"></app-information>
+  <app-information [labels]="labels" prefix="bank" [(ngModel)]="bank" name="bank"></app-information>
+  external: {{bank | json}}
 </div>
 
 <div class="location-container">

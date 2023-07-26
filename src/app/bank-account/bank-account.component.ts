@@ -8,4 +8,6 @@ import { LABELS } from '../core/models/labels';
 })
 export class BankAccountComponent {
   labels = LABELS['bank'];
+
+  bank = {};
 }
