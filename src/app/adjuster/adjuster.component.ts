@@ -17,60 +17,6 @@ export class AdjusterComponent {
 
   constructor() {
     this.adjuster = new AdjusterClass();
-    this.adjuster.adjusterStatus = "new";
-    this.adjuster.adjusterPhones = [
-      {
-          "adjusterPhoneDmpPk": {
-              "adjusterPhoneAdjusterTransNo": null,
-              "adjusterPhoneLineNo": null
-          },
-          "adjusterPhoneAdjusterTransNo": null,
-          "adjusterPhoneAdjusterPk": "ADJ00005",
-          "adjusterPhoneLineNo": 1,
-          "adjusterPhoneType": "Work",
-          "adjusterPhoneNumber": "09123456789",
-          "adjusterPhoneStatus": null,
-          "adjusterPhoneCreatedBy": "IIBSV5_UAT",
-          "adjusterPhoneDateCreated": "2022-09-17T22:40:53",
-          "adjusterPhoneUpdatedBy": null,
-          "adjusterPhoneDateUpdated": null
-      },
-      {
-        "adjusterPhoneDmpPk": {
-            "adjusterPhoneAdjusterTransNo": null,
-            "adjusterPhoneLineNo": null
-        },
-        "adjusterPhoneAdjusterTransNo": null,
-        "adjusterPhoneAdjusterPk": "ADJ00005",
-        "adjusterPhoneLineNo": 2,
-        "adjusterPhoneType": "Work",
-        "adjusterPhoneNumber": "09234567890",
-        "adjusterPhoneStatus": null,
-        "adjusterPhoneCreatedBy": "IIBSV5_UAT",
-        "adjusterPhoneDateCreated": "2022-09-17T22:40:53",
-        "adjusterPhoneUpdatedBy": null,
-        "adjusterPhoneDateUpdated": null
-      },
-      {
-          "adjusterPhoneDmpPk": {
-              "adjusterPhoneAdjusterTransNo": null,
-              "adjusterPhoneLineNo": null
-          },
-          "adjusterPhoneAdjusterTransNo": null,
-          "adjusterPhoneAdjusterPk": "ADJ00005",
-          "adjusterPhoneLineNo": 3,
-          "adjusterPhoneType": "Work",
-          "adjusterPhoneNumber": "1234567",
-          "adjusterPhoneStatus": null,
-          "adjusterPhoneCreatedBy": "IIBSV5_UAT",
-          "adjusterPhoneDateCreated": "2022-09-17T22:40:53",
-          "adjusterPhoneUpdatedBy": null,
-          "adjusterPhoneDateUpdated": null
-      }
-    ];
-
-      // console.log('aDJUSTER PHONES', this.adjuster.adjusterPhones);
-      // console.log('aDJUSTER PHONES', this.adjuster.phones);
   }
 
   setInformation(e) {
@@ -82,7 +28,56 @@ export class AdjusterComponent {
   }
 
   setPhones(e) {
-    console.log(e.value);
     this.adjuster.phones = e.value;
+  }
+  
+  setContacts(e) {
+    this.adjuster.contacts = e;
+  }
+
+  getSummary() {
+    let primary = null;
+
+    if (this.adjuster.adjusterContacts && this.adjuster.adjusterContacts[0]) {
+      primary = this.adjuster.adjusterContacts[0];
+    }
+
+    console.log(this.adjuster);
+
+    return {
+      sections: [
+        {
+          title: 'Account Referrer Information',
+          elements: [
+            { label: 'Code', value: this.adjuster.adjusterCode },
+            { label: 'Name', value: this.adjuster.adjusterName },
+            { label: 'Specialty', value: this.adjuster.adjusterSpecialty },
+          ],
+        },
+        {
+          title: 'Address and Phone/s',
+          elements: [
+            { label: 'Address', value: this.adjuster.adjusterAddress },
+            { label: 'Phone/s', value: this.adjuster.adjusterPhones?.map(e=>e.adjusterPhoneNumber) },
+          ],
+        },
+        {
+          title: 'Primary Contact',
+          elements: [
+            { label: 'Full Name', value: primary?.contactNameFirst + ' ' + primary?.contactNameLast},
+            { label: 'Designation', value: primary?.contactDesignation },
+            { label: 'Phones', value: primary?.contactPhones?.map(e=>e.contactPhoneNumber) },
+          ],
+        },
+        {
+          // title: "",
+          elements: [
+            { label: 'Email Address', value: primary?.contactEmail },
+            { label: 'Group Email Address', value: primary?.contactGroupEmail },
+            { label: 'Date of Birth', value: primary?.contactBirthdate },
+          ],
+        },
+      ],
+    };
   }
 }

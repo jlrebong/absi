@@ -19,6 +19,7 @@
     <div><b>Contact No./s</b></div>
     <div><b>Primary</b></div>
     <div><b>Status</b></div>
+    <div><b></b></div>
   </div>
 
   <ng-container *ngFor="let contact of contacts; let i = index">
@@ -27,14 +28,19 @@
         <mat-icon>remove_circle</mat-icon>
       </div>
       <div>{{ i + 1 }}</div>
-      <div>{{ contact.fullname }}</div>
-      <div>{{ contact.designation }}</div>
-      <div>{{ contact.email }}</div>
-      <div>{{ contact.groupemail }}</div>
-      <div>{{ contact.dob }}</div>
-      <div>{{ contact.contactno }}</div>
-      <div>{{ contact.primary == true ? "Yes" : "No" }}</div>
-      <div>{{ contact.status }}</div>
+      <div>{{ contact.contactNameFirst }}</div>
+      <div>{{ contact.contactDesignation }}</div>
+      <div>{{ contact.contactEmail }}</div>
+      <div>{{ contact.contactGroupEmail }}</div>
+      <div>{{ contact.contactBirthdate }}</div>
+      <div>
+        <span *ngFor="let cphone of contact.contactPhones;">
+            {{cphone.contactPhoneNumber}},
+        </span>
+      </div>
+      <div>TBD</div>
+      <div>{{ contact.contactStatus }}</div>
+      <div (click)="editDialog()"><mat-icon>edit</mat-icon><b></b></div>
     </div>
   </ng-container>
 </div>

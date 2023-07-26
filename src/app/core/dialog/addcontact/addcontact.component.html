@@ -1,13 +1,13 @@
 <mat-dialog-content class="add-contact-container">
-  <app-contact-details></app-contact-details>
-  <app-phone-table></app-phone-table>
+  <app-contact-details  [contact]="contact" (data)="setDetails($event)"></app-contact-details>
+  <app-phone-table [phoneList]="contact.contactPhones" (data)="setPhones($event)"></app-phone-table>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-stroked-button color="warn" (click)="close()">
+  <button mat-stroked-button color="warn" (click)="close()" >
     <mat-icon>close</mat-icon>Close
   </button>
-  <button mat-stroked-button color="primary" (click)="save()">
+  <button mat-stroked-button color="primary" (click)="save()" [disabled]="!checkValid()">
     <mat-icon>save</mat-icon>Save
   </button>
 </mat-dialog-actions>

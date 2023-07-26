@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -8,37 +8,36 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactDetailsComponent implements OnInit {
   @Input() labels;
-  contactDetailsForm = this.fb.group({
-    contactName: '',
-    status: ['NEW'],
-    lastName: ['', Validators.required],
-    designation: ['', Validators.required],
-    firstName: ['', Validators.required],
-    middleInitial: '',
-    email: ['', [Validators.required, Validators.email]],
-    salutation: ['', Validators.required],
-    suffix: '',
-    birthDate: '',
-    extraEmail: [[''], Validators.email],
+
+  @Input()
+  contact;
+
+  @Output()
+  data = new EventEmitter();
+
+  form = this.fb.group({
+    contactPk: '',
+    contactId: '',
+    contactNameLast: ['', Validators.required],
+    contactNameFirst: ['', Validators.required],
+    contactNameMiddleInitial: '',
+    contactNamePrefix: '',
+    contactNameSuffix: [ '', Validators.required],
+    contactDesignation: ['', Validators.required],
+    contactEmail: ['', [Validators.required, Validators.email]],
+    contactGroupEmail: ['', Validators.email],
+    contactBirthdate: '',
+    contactIsDefault: false,
+    contactStatus: ['NEW'],
+    contactCreatedBy: '',
+    contactDateCreated: '',
+    contactUpdatedBy: '',
+    contactDateUpdated: ''
   });
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    // this.contactDetailsForm
-    //   .get('lastName')
-    //   ?.valueChanges.subscribe((id) => console.log(id));
-    // this.contactDetailsForm
-    //   .get('designation')
-    //   ?.valueChanges.subscribe((id) => console.log(id));
-    // this.contactDetailsForm
-    //   .get('firstName')
-    //   ?.valueChanges.subscribe((id) => console.log(id));
-    // this.contactDetailsForm
-    //   .get('email')
-    //   ?.valueChanges.subscribe((id) => console.log(id));
-    this.contactDetailsForm
-      .get('birthDate')
-      ?.valueChanges.subscribe((id) => console.log(id));
+    this.form.valueChanges.subscribe((e) => this.data.emit(e));
   }
 }

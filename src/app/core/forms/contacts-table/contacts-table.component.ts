@@ -1,34 +1,27 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddcontactComponent } from '../../dialog/addcontact/addcontact.component';
+import { Contact } from '../../models/contact-phone';
 
 @Component({
   selector: 'app-contacts-table',
   templateUrl: './contacts-table.component.html',
   styleUrls: ['./contacts-table.component.css']
 })
-export class ContactsTableComponent {
+export class ContactsTableComponent implements OnInit  {
   @Input()
-  initialValue;
+  contactsList;
+
+  contacts: Contact[];
 
   @Output()
   data = new EventEmitter();
   
-  // Should be from service
-  contacts = [
-    {
-      fullname:'Jasper Rebong', 
-      designation:'Mr.', 
-      email:'jrebong0@gmail.com',
-      groupemail: 'lvcc.com',
-      dob: '01/01/1990',
-      contactno: ['09478907923', '0948123456'],
-      primary:true,
-      status:'new',
-    }
-  ] ;
-
   constructor(private dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.contacts= this.contactsList;
+  }
 
   openDialog() {
 
@@ -38,6 +31,17 @@ export class ContactsTableComponent {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "80vw";
 
+    const dialogRef = this.dialog.open(AddcontactComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(data => {
+      this.contacts.push(data);
+      this.data.emit(this.contacts);
+    }); 
+  }
+
+  editDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {}
     const dialogRef = this.dialog.open(AddcontactComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(

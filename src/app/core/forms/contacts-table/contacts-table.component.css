@@ -6,7 +6,7 @@
 
 .table-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr repeat(3, 2fr) 3fr repeat(4, 2fr);
+    grid-template-columns: 1fr 1fr repeat(3, 2fr) 3fr repeat(4, 2fr) 1fr;
     gap: 5px;
 }
 .table-header {

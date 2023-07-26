@@ -1,4 +1,4 @@
-import { ContactPhone } from "./contact-phone"
+import { Contact, ContactPhone } from "./contact-phone"
 
 // This is the way to create a class from an interface in angular
 // interface-class merging
@@ -75,41 +75,12 @@ export class AdjusterClass {
     }
 
     get contacts() {
-        return this.adjusterContacts?.map((e) => {
-            return {
-                first: e.contactNameFirst,
-                last: e.contactNameLast,
-            };
-        });
+        return this.adjusterContacts || [];
     }
 
     set contacts(e) {
-        this.adjusterContacts = [];
-        e.forEach(contact=>{
-            let a = {
-                contactPk: "",
-                contactId: "",
-                contactNameLast: "",
-                contactNameFirst: "",
-                contactNameMiddleInitial: "",
-                contactNamePrefix: "",
-                contactNameSuffix: "",
-                contactDesignation: "",
-                contactEmail: "",
-                contactGroupEmail: "",
-                contactBirthdate: "",
-                contactIsDefault: false,
-                contactStatus: "",
-                contactCreatedBy: "",
-                contactDateCreated: "",
-                contactUpdatedBy: "",
-                contactDateUpdated: "",
-                contactPhones: []
-            }
-            this.adjusterContacts.push(a);
-        });
+        this.adjusterContacts = e;
     }
-
 
 }
 
@@ -134,7 +105,7 @@ export interface Adjuster {
     adjusterUpdatedBy: string
     adjusterDateUpdated: string
     adjusterPhones: AdjusterPhone[]
-    adjusterContacts: AdjusterContact[]
+    adjusterContacts: Contact[]
     adjusterCompleteAddress: string
     adjusterPhoneList: string
     adjusterPrimaryContactName: string
@@ -167,24 +138,4 @@ export interface Adjuster {
     adjusterPhoneLineNo: any
   }
   
-  export interface AdjusterContact {
-    contactPk: string
-    contactId: string
-    contactNameLast: string
-    contactNameFirst: string
-    contactNameMiddleInitial: string
-    contactNamePrefix: string
-    contactNameSuffix?: string
-    contactDesignation: string
-    contactEmail: string
-    contactGroupEmail: any
-    contactBirthdate: any
-    contactIsDefault: boolean
-    contactStatus: any
-    contactCreatedBy: string
-    contactDateCreated: string
-    contactUpdatedBy?: string
-    contactDateUpdated?: string
-    contactPhones: ContactPhone[]
-  }
-  
+ 

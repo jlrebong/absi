@@ -1,3 +1,25 @@
+export interface Contact {
+    contactPk: string
+    contactId: string
+    contactNameLast: string
+    contactNameFirst: string
+    contactNameMiddleInitial: string
+    contactNamePrefix: string
+    contactNameSuffix?: string
+    contactDesignation: string
+    contactEmail: string
+    contactGroupEmail: any
+    contactBirthdate: any
+    contactIsDefault: boolean
+    contactStatus: any
+    contactCreatedBy: string
+    contactDateCreated: string
+    contactUpdatedBy?: string
+    contactDateUpdated?: string
+    contactPhones: ContactPhone[]
+  }
+  
+
 export interface ContactPhone {
     contactPhonePk: ContactPhonePk
     contactPhoneContactPk: string

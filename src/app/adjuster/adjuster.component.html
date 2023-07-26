@@ -1,20 +1,21 @@
 <div class="information-container">
-  <app-information [labels]="labels" [initialValue]="adjuster.information" (data)="setInformation($event)" ></app-information>
+  <app-information [labels]="labels" [information]="adjuster.information" (data)="setInformation($event)" ></app-information>
   external: {{adjuster | json}}
 </div>
 
 <div class="location-container">
-  <app-location [initialValue]="adjuster.location" (data)="setLocation($event)"></app-location>
-  <app-phone-table [initialValue]="adjuster.phones" (data)="setPhones($event)"></app-phone-table>
+  <app-location [location]="adjuster.location" (data)="setLocation($event)"></app-location>
+  <app-phone-table [phoneList]="adjuster.phones" (data)="setPhones($event)"></app-phone-table>
 </div>
 
 <div class="contact-table-container">
-  <app-contacts-table></app-contacts-table>
+  <app-contacts-table [contactsList]="adjuster.contacts" (data)="setContacts($event)"></app-contacts-table>
 </div>
 
 <div class="summary">
   <app-summary
     title="adjuster summary"
     header="adjuster information"
+    [summary]="getSummary()"
   ></app-summary>
 </div>

@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class LocationComponent implements OnInit {
   @Input()
-  initialValue;
+  location;
 
   @Output()
   data = new EventEmitter();
@@ -19,11 +19,11 @@ export class LocationComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      address: this.initialValue.address,
-      country: this.initialValue.country,
-      province: this.initialValue.province,
-      city: this.initialValue.city,
-      zip: this.initialValue.zip
+      address: this.location.address,
+      country: this.location.country,
+      province: this.location.province,
+      city: this.location.city,
+      zip: this.location.zip
     });
 
     this.form.valueChanges.subscribe(e => this.data.emit(e));
