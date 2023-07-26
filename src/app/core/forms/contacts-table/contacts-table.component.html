@@ -5,20 +5,20 @@
     color="primary"
     (click)="openDialog()"
   >
-    <mat-icon>add_circle</mat-icon>Add Row
+    <mat-icon>add_circle</mat-icon><b>{{ "Add Row".toUpperCase() }}</b>
   </button>
 
   <div class="table-header table-grid">
     <div></div>
-    <div>#</div>
-    <div>Full Name</div>
-    <div>Designation</div>
-    <div>Email Address</div>
-    <div>Group Mail Address</div>
-    <div>Date of Birth</div>
-    <div>Contact No./s</div>
-    <div>Primary</div>
-    <div>Status</div>
+    <div><b>#</b></div>
+    <div><b>Full Name</b></div>
+    <div><b>Designation</b></div>
+    <div><b>Email Address</b></div>
+    <div><b>Group Mail Address</b></div>
+    <div><b>Date of Birth</b></div>
+    <div><b>Contact No./s</b></div>
+    <div><b>Primary</b></div>
+    <div><b>Status</b></div>
   </div>
 
   <ng-container *ngFor="let contact of contacts; let i = index">
