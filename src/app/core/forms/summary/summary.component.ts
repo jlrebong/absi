@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -10,43 +10,11 @@ export class SummaryComponent {
   @Input() title: string;
   @Input() header: string;
 
-  summary = {
-    sections: [
-      {
-        title: 'Account Referrer Information',
-        elements: [
-          { label: 'Name', value: 'Test' },
-          { label: 'Type', value: 'Test' },
-          { label: 'Email Address', value: 'Test' },
-          { label: 'TIN', value: 'Test' },
-          { label: 'Account No.', value: 'Test' },
-        ],
-      },
-      {
-        title: 'Address and Phone/s',
-        elements: [
-          { label: 'Address', value: 'Test' },
-          { label: 'Phone/s', value: ['123456789', '987654321'] },
-        ],
-      },
-      {
-        title: 'Primary Contact',
-        elements: [
-          { label: 'Full Name', value: 'Test' },
-          { label: 'Designation', value: 'Test' },
-          { label: 'Phones', value: ['123456789', '987654321'] },
-        ],
-      },
-      {
-        // title: "",
-        elements: [
-          { label: 'Email Address', value: 'Test' },
-          { label: 'Group Email Address', value: 'Test' },
-          { label: 'Date of Birth', value: '01/01/1990' },
-        ],
-      },
-    ],
-  };
+  @Input()
+  summary;
+
+  @Output()
+  data = new EventEmitter();
 
   form = this.fb.group({
     agree: false,

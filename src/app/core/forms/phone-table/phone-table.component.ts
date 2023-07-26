@@ -9,7 +9,7 @@ import { Phone } from '../../models/phone-model';
 })
 export class PhoneTableComponent implements OnInit {
   @Input()
-  initialValue;
+  phoneList;
 
   @Output()
   data = new EventEmitter();
@@ -31,13 +31,11 @@ export class PhoneTableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.initialValue);
-
     this.form = this.fb.group({
       phones: this.fb.array([])
     });
 
-    this.initialValue.forEach(e => {
+    this.phoneList?.forEach(e => {
       const PhoneForm = this.fb.group({
         lineNo: e.lineNo,
         type: e.type,
@@ -62,8 +60,6 @@ export class PhoneTableComponent implements OnInit {
       status: "NEW" 
     });
     this.phones.push(PhoneForm);
-
-    console.log(this.phones);
   }
 
   getStatus(idx) {

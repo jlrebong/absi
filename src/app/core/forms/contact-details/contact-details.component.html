@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="contact-details-form" [formGroup]="contactDetailsForm">
+  <form class="contact-details-form" [formGroup]="form">
     <div class="contact-name-status-highlighted">
       <mat-form-field class="highlighted" appearance="outline">
         <mat-label>Contact Name</mat-label>
@@ -7,7 +7,10 @@
           matInput
           placeholder="Contact Name"
           maxlength="40"
-          formControlName="contactName"
+          placeholder="{{ form.get('contactNameFirst').value + ' ' + 
+                          form.get('contactNameLast').value
+                       }}"
+          disabled
         />
       </mat-form-field>
 
@@ -17,7 +20,7 @@
           matInput
           placeholder="NEW"
           maxlength="40"
-          formControlName="status"
+          disabled
         />
       </mat-form-field>
     </div>
@@ -29,7 +32,7 @@
           matInput
           placeholder="Last Name"
           maxlength="40"
-          formControlName="lastName"
+          formControlName="contactNameLast"
         />
       </mat-form-field>
 
@@ -39,7 +42,7 @@
           matInput
           placeholder="Designation"
           maxlength="10"
-          formControlName="designation"
+          formControlName="contactDesignation"
         />
       </mat-form-field>
     </div>
@@ -51,7 +54,7 @@
           matInput
           placeholder="First Name"
           maxlength="20"
-          formControlName="firstName"
+          formControlName="contactNameFirst"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -60,7 +63,7 @@
           matInput
           placeholder="M.I"
           maxlength="5"
-          formControlName="middleInitial"
+          formControlName="contactNameMiddleInitial"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -69,7 +72,7 @@
           matInput
           placeholder="Email Address"
           maxlength="50"
-          formControlName="email"
+          formControlName="contactEmail"
         />
       </mat-form-field>
     </div>
@@ -80,7 +83,7 @@
           matInput
           placeholder="Salutation"
           maxlength="5"
-          formControlName="salutation"
+          formControlName="contactDesignation"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -89,7 +92,7 @@
           matInput
           placeholder="Suffix"
           maxlength="5"
-          formControlName="suffix"
+          formControlName="contactNameSuffix"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -97,7 +100,7 @@
         <input
           matInput
           [matDatepicker]="picker"
-          formControlName="birthDate"
+          formControlName="contactBirthdate"
           readonly
         />
         <mat-datepicker-toggle
@@ -114,7 +117,7 @@
         matInput
         placeholder="Group of Email Address"
         maxlength="40"
-        formControlName="extraEmail"
+        formControlName="contactGroupEmail"
       ></textarea>
     </mat-form-field>
   </form>

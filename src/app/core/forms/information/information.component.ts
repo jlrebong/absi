@@ -11,7 +11,7 @@ export class InformationComponent implements OnInit {
   labels;
 
   @Input()
-  initialValue;
+  information;
 
   @Output()
   data = new EventEmitter();
@@ -22,10 +22,10 @@ export class InformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      status: [this.initialValue.status],
-      code: [this.initialValue.code, Validators.required],
-      name: [this.initialValue.name, Validators.required],
-      specialty: this.initialValue.specialty,
+      status: [this.information.status],
+      code: [this.information.code, Validators.required],
+      name: [this.information.name, Validators.required],
+      specialty: this.information.specialty,
     });
     
     this.form.valueChanges.subscribe(e => this.data.emit(e));
