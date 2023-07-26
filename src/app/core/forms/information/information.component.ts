@@ -1,41 +1,36 @@
-import { Component, Input, OnInit,forwardRef } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, FormGroup, NG_VALIDATORS, Validator, AbstractControl, ValidationErrors} from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit,Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
   styleUrls: ['./information.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InformationComponent),
-      multi: true,
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => InformationComponent),
-      multi: true,
-    },
-  ]
 })
-export class InformationComponent implements OnInit, ControlValueAccessor, Validator {
+export class InformationComponent implements OnInit {
   @Input()
   labels;
 
   @Input()
-  prefix;
+  initialValue;
+
+  @Output()
+  data = new EventEmitter();
 
   form: FormGroup;
 
   constructor(private fb: FormBuilder) {}
+
   ngOnInit(): void {
+    console.log(this.initialValue);
     this.form = this.fb.group({
-      status: ['new'],
-      code: ['', Validators.required],
-      name: ['', Validators.required],
-      specialty: "",
+      status: [this.initialValue.status],
+      code: [this.initialValue.code, Validators.required],
+      name: [this.initialValue.name, Validators.required],
+      specialty: this.initialValue.specialty,
     });
+
+    
+    this.form.valueChanges.subscribe(e => this.data.emit(e));
   }
 
   checkRequired(type): boolean {
@@ -45,23 +40,5 @@ export class InformationComponent implements OnInit, ControlValueAccessor, Valid
 
   
 
-  // Boiler Plate Code
-  validate(control: AbstractControl<any, any>): ValidationErrors {
-    return this.form.valid ? null : { data: true };
-  }
-  writeValue(data): void {
-    console.log('write', data);
-    this.form.patchValue(data, { emitEvent: false});
-  }
-  registerOnChange(fn: any): void {
-    console.log('registerOnChange');
-    this.form.valueChanges.subscribe(fn);
-  }
-  registerOnTouched(fn: any): void {
-    console.log('registerOnTouched');
-    this.form.valueChanges.subscribe(fn);
-  }
-  setDisabledState?(isDisabled: boolean): void {
-    isDisabled ? this.form.disable() : this.form.enable();
-  }
+  
 }
