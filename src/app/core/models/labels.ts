@@ -24,6 +24,30 @@ export var LABELS = {
     code: 'Bank Account Code',
     name: 'Bank Account Name',
   },
+  branch: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    code: 'Branch Section Code',
+    name: 'Branch Section Name',
+  },
+  division: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    code: 'Division Section Code',
+    name: 'Division Section Name',
+  },
   // contactDetails: {
   //   contactName: 'Contact Name',
   //   status: 'Status',
