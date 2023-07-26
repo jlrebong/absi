@@ -1,6 +1,6 @@
 <div class="container">
   <form class="information-form" [formGroup]="form" *ngIf="labels.status">
-    <mat-radio-group aria-label="Select an option" [formControlName]="status">
+    <mat-radio-group aria-label="Select an option" formControlName="status">
       <mat-label>{{ labels.status.label }}</mat-label>
       <mat-radio-button
         value="{{ statusLabel.id }}"
@@ -12,7 +12,7 @@
     <mat-form-field class="adjuster_name_title" appearance="outline">
       <input
         matInput
-        placeholder="{{ form.get(this.name).value || labels.name }}"
+        placeholder="{{ form.get('name').value || labels.name }}"
         disabled
       />
     </mat-form-field>
@@ -28,10 +28,10 @@
         matInput
         placeholder="{{ labels.code }} *"
         maxlength="20"
-        [formControlName]="code"
+        formControlName="code"
         required
       />
-      <mat-hint align="end">{{ form.get("code").value.length }}/20</mat-hint>
+      <mat-hint align="end">{{ form.get('code').value.length }}/20</mat-hint>
     </mat-form-field>
 
     <mat-form-field
@@ -44,9 +44,9 @@
         matInput
         placeholder="{{ labels.name }} *"
         maxlength="255"
-        [formControlName]="name"
+        formControlName="name"
       />
-      <mat-hint align="end">{{ form.get("name").value.length }}/255</mat-hint>
+      <mat-hint align="end">{{ form.get('name').value.length }}/255</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline" *ngIf="labels.specialty">
@@ -55,7 +55,7 @@
         matInput
         placeholder="{{ labels.specialty }}"
         maxlength="500"
-        [formControlName]="specialty"
+        formControlName="specialty"
       ></textarea>
       <mat-hint align="end"
         >{{ form.get("specialty").value.length }}/500</mat-hint

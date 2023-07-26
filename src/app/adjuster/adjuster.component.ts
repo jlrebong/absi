@@ -13,12 +13,13 @@ import { Adjuster, AdjusterClass } from '../core/models/adjuster';
 export class AdjusterComponent {
   labels = LABELS["adjuster"];
   adjuster: AdjusterClass;
+  adjusterFormData = {
+    'location': {},
+    'information': {}
+  };
 
   constructor() {
     this.adjuster = new AdjusterClass();
     this.adjuster.adjusterStatus = "new";
-
-    console.log(this.adjuster);
-
   }
 }

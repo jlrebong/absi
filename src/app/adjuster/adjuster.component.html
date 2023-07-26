@@ -1,10 +1,10 @@
 <div class="information-container">
-  <app-information [labels]="labels" prefix="adjuster" [(ngModel)]="adjuster" name="adjuster" ></app-information>
-  external: {{adjuster | json}}
+  <app-information [labels]="labels" prefix="adjuster" [(ngModel)]="adjusterFormData.information" name="information" ></app-information>
+  external: {{adjusterFormData | json}}
 </div>
 
 <div class="location-container">
-  <app-location></app-location>
+  <app-location [(ngModel)]="adjusterFormData.location" name="location"></app-location>
   <app-phone-table></app-phone-table>
 </div>
 

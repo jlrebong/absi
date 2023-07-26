@@ -26,7 +26,6 @@ export class PhoneTableComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    console.log(this.form);
   }
 
   get phones() {
@@ -40,7 +39,6 @@ export class PhoneTableComponent implements OnInit {
       status: "NEW" 
     });
     this.phones.push(PhoneForm);
-    console.log(this.phones);
   }
 
   getStatus(idx) {
