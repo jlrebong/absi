@@ -27,7 +27,8 @@ export class AdjusterClass {
             country: this.adjusterCountry  || '',
             province: this.adjusterProvince  || '',
             city: this.adjusterCity  || '',
-            zip: this.adjusterZipcode  || ''
+            zip: this.adjusterZipcode  || '',
+            phones: this.adjusterPhones || []
         }
     }
 
@@ -38,6 +39,78 @@ export class AdjusterClass {
         this.adjusterCity     = e.city;
         this.adjusterZipcode  = e.zip;
     }
+
+    get phones() {
+        return this.adjusterPhones?.map(e=>{
+            return {
+                lineNo: e.adjusterPhoneLineNo,
+                type:   e.adjusterPhoneType,
+                number: e.adjusterPhoneNumber,
+                status: e.adjusterPhoneStatus
+            };
+        });
+    }
+
+    set phones(e) {
+        this.adjusterPhones = [];
+        e.forEach(phone=>{
+            let a = {
+                adjusterPhoneLineNo: phone.lineNo,
+                adjusterPhoneDmpPk: {
+                    adjusterPhoneAdjusterTransNo: '',
+                    adjusterPhoneLineNo: ''
+                },
+                adjusterPhoneAdjusterTransNo: '',
+                adjusterPhoneAdjusterPk: '',
+                adjusterPhoneType: phone.type,
+                adjusterPhoneNumber: phone.number,
+                adjusterPhoneStatus: phone.status,
+                adjusterPhoneCreatedBy: '',
+                adjusterPhoneDateCreated: '',
+                adjusterPhoneUpdatedBy:'',
+                adjusterPhoneDateUpdated: '',
+            };
+            this.adjusterPhones.push(a);
+        });
+    }
+
+    get contacts() {
+        return this.adjusterContacts?.map((e) => {
+            return {
+                first: e.contactNameFirst,
+                last: e.contactNameLast,
+            };
+        });
+    }
+
+    set contacts(e) {
+        this.adjusterContacts = [];
+        e.forEach(contact=>{
+            let a = {
+                contactPk: "",
+                contactId: "",
+                contactNameLast: "",
+                contactNameFirst: "",
+                contactNameMiddleInitial: "",
+                contactNamePrefix: "",
+                contactNameSuffix: "",
+                contactDesignation: "",
+                contactEmail: "",
+                contactGroupEmail: "",
+                contactBirthdate: "",
+                contactIsDefault: false,
+                contactStatus: "",
+                contactCreatedBy: "",
+                contactDateCreated: "",
+                contactUpdatedBy: "",
+                contactDateUpdated: "",
+                contactPhones: []
+            }
+            this.adjusterContacts.push(a);
+        });
+    }
+
+
 }
 
 export interface Adjuster {

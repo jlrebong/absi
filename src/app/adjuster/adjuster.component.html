@@ -5,7 +5,7 @@
 
 <div class="location-container">
   <app-location [initialValue]="adjuster.location" (data)="setLocation($event)"></app-location>
-  <app-phone-table></app-phone-table>
+  <app-phone-table [initialValue]="adjuster.phones" (data)="setPhones($event)"></app-phone-table>
 </div>
 
 <div class="contact-table-container">

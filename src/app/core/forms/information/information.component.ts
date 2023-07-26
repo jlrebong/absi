@@ -21,14 +21,12 @@ export class InformationComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    console.log(this.initialValue);
     this.form = this.fb.group({
       status: [this.initialValue.status],
       code: [this.initialValue.code, Validators.required],
       name: [this.initialValue.name, Validators.required],
       specialty: this.initialValue.specialty,
     });
-
     
     this.form.valueChanges.subscribe(e => this.data.emit(e));
   }
