@@ -5,15 +5,15 @@
     color="primary"
     (click)="addPhone()"
   >
-    <mat-icon>add_circle</mat-icon>Add Row
+    <mat-icon>add_circle</mat-icon><b>{{ "Add Row".toUpperCase() }}</b>
   </button>
 
   <div class="table-header table-grid">
     <div></div>
-    <div>#</div>
-    <div>Type</div>
-    <div>Phone Number</div>
-    <div>Status</div>
+    <div><b>#</b></div>
+    <div><b>Type</b></div>
+    <div><b>Phone Number</b></div>
+    <div><b>Status</b></div>
   </div>
 
   <ng-container formArrayName="phones">
