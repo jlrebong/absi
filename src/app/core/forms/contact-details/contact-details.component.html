@@ -3,25 +3,12 @@
     <div class="contact-name-status-highlighted">
       <mat-form-field class="highlighted" appearance="outline">
         <mat-label>Contact Name</mat-label>
-        <input
-          matInput
-          placeholder="Contact Name"
-          maxlength="40"
-          placeholder="{{ form.get('contactNameFirst').value + ' ' + 
-                          form.get('contactNameLast').value
-                       }}"
-          disabled
-        />
+        <input matInput maxlength="40" [value]="getContactName()" disabled />
       </mat-form-field>
 
       <mat-form-field class="highlighted" appearance="outline">
         <mat-label>Status</mat-label>
-        <input
-          matInput
-          placeholder="NEW"
-          maxlength="40"
-          disabled
-        />
+        <input matInput placeholder="NEW" maxlength="40" disabled />
       </mat-form-field>
     </div>
 
@@ -83,7 +70,7 @@
           matInput
           placeholder="Salutation"
           maxlength="5"
-          formControlName="contactDesignation"
+          formControlName="contactNamePrefix"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">

@@ -21,8 +21,8 @@ export class ContactDetailsComponent implements OnInit {
     contactNameLast: ['', Validators.required],
     contactNameFirst: ['', Validators.required],
     contactNameMiddleInitial: '',
-    contactNamePrefix: '',
-    contactNameSuffix: [ '', Validators.required],
+    contactNamePrefix: ['', Validators.required],
+    contactNameSuffix: '',
     contactDesignation: ['', Validators.required],
     contactEmail: ['', [Validators.required, Validators.email]],
     contactGroupEmail: ['', Validators.email],
@@ -32,12 +32,30 @@ export class ContactDetailsComponent implements OnInit {
     contactCreatedBy: '',
     contactDateCreated: '',
     contactUpdatedBy: '',
-    contactDateUpdated: ''
+    contactDateUpdated: '',
   });
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe((e) => this.data.emit(e));
+    this.form.valueChanges.subscribe((e) => {
+      this.data.emit(e);
+    });
+  }
+
+  getContactName(): string {
+    const firstName = this.form.get('contactNameFirst').value || '';
+    const middleInitial = this.form.get('contactNameMiddleInitial').value || '';
+    const lastName = this.form.get('contactNameLast').value || '';
+    const salutation = this.form.get('contactNamePrefix').value || '';
+
+    // Join name components without extra spaces
+    const nameComponents = [
+      salutation,
+      firstName,
+      middleInitial,
+      lastName,
+    ].filter(Boolean);
+    return nameComponents.join(' ');
   }
 }

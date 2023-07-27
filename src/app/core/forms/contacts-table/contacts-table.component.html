@@ -1,3 +1,6 @@
+<pre>
+  contacts:{{ contacts | json }}
+</pre>
 <div class="container contacts-table-container">
   <button
     class="add_row"
@@ -28,14 +31,14 @@
         <mat-icon>remove_circle</mat-icon>
       </div>
       <div>{{ i + 1 }}</div>
-      <div>{{ contact.contactNameFirst }}</div>
+      <div>{{ getContactName(contact) }}</div>
       <div>{{ contact.contactDesignation }}</div>
       <div>{{ contact.contactEmail }}</div>
       <div>{{ contact.contactGroupEmail }}</div>
-      <div>{{ contact.contactBirthdate }}</div>
+      <div>{{ contact.contactBirthdate | date }}</div>
       <div>
-        <span *ngFor="let cphone of contact.contactPhones;">
-            {{cphone.contactPhoneNumber}},
+        <span *ngFor="let cphone of contact.contactPhones">
+          {{ cphone.contactPhoneNumber }},
         </span>
       </div>
       <div>TBD</div>

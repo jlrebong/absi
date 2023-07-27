@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
-import {LABELS} from "../core/models/labels";
+import { LABELS } from '../core/models/labels';
 import { Adjuster, AdjusterClass } from '../core/models/adjuster';
-
-
-
 
 @Component({
   selector: 'app-adjuster',
   templateUrl: './adjuster.component.html',
-  styleUrls: ['./adjuster.component.css']
+  styleUrls: ['./adjuster.component.css'],
 })
 export class AdjusterComponent {
-  labels = LABELS["adjuster"];
+  labels = LABELS['adjuster'];
   adjuster: AdjusterClass;
-  
 
   constructor() {
     this.adjuster = new AdjusterClass();
@@ -30,7 +26,7 @@ export class AdjusterComponent {
   setPhones(e) {
     this.adjuster.phones = e.value;
   }
-  
+
   setContacts(e) {
     this.adjuster.contacts = e;
   }
@@ -42,12 +38,10 @@ export class AdjusterComponent {
       primary = this.adjuster.adjusterContacts[0];
     }
 
-    console.log(this.adjuster);
-
     return {
       sections: [
         {
-          title: 'Account Referrer Information',
+          title: 'Adjuster Information',
           elements: [
             { label: 'Code', value: this.adjuster.adjusterCode },
             { label: 'Name', value: this.adjuster.adjusterName },
@@ -58,15 +52,26 @@ export class AdjusterComponent {
           title: 'Address and Phone/s',
           elements: [
             { label: 'Address', value: this.adjuster.adjusterAddress },
-            { label: 'Phone/s', value: this.adjuster.adjusterPhones?.map(e=>e.adjusterPhoneNumber) },
+            {
+              label: 'Phone/s',
+              value: this.adjuster.adjusterPhones?.map(
+                (e) => e.adjusterPhoneNumber
+              ),
+            },
           ],
         },
         {
           title: 'Primary Contact',
           elements: [
-            { label: 'Full Name', value: primary?.contactNameFirst + ' ' + primary?.contactNameLast},
+            {
+              label: 'Full Name',
+              value: primary?.contactNameFirst + ' ' + primary?.contactNameLast,
+            },
             { label: 'Designation', value: primary?.contactDesignation },
-            { label: 'Phones', value: primary?.contactPhones?.map(e=>e.contactPhoneNumber) },
+            {
+              label: 'Phones',
+              value: primary?.contactPhones?.map((e) => e.contactPhoneNumber),
+            },
           ],
         },
         {

@@ -21,4 +21,8 @@ export class SummaryComponent {
   });
 
   constructor(private fb: FormBuilder) {}
+
+  isDate(value: any): boolean {
+    return value instanceof Date && !isNaN(value.getTime());
+  }
 }
