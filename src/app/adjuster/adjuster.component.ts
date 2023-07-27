@@ -65,7 +65,7 @@ export class AdjusterComponent {
           elements: [
             {
               label: 'Full Name',
-              value: primary?.contactNameFirst + ' ' + primary?.contactNameLast,
+              value: primary ? this.getPrimaryContactName() : '',
             },
             { label: 'Designation', value: primary?.contactDesignation },
             {
@@ -75,7 +75,7 @@ export class AdjusterComponent {
           ],
         },
         {
-          // title: "",
+          title: '',
           elements: [
             { label: 'Email Address', value: primary?.contactEmail },
             { label: 'Group Email Address', value: primary?.contactGroupEmail },
@@ -84,5 +84,26 @@ export class AdjusterComponent {
         },
       ],
     };
+  }
+
+  getPrimaryContactName(): string {
+    const primary = this.adjuster.adjusterContacts?.[0];
+    if (primary) {
+      const firstName = primary.contactNameFirst || '';
+      const middleInitial = primary.contactNameMiddleInitial || '';
+      const lastName = primary.contactNameLast || '';
+      const salutation = primary.contactNamePrefix || '';
+
+      // Join name components without extra spaces
+      const nameComponents = [
+        salutation,
+        firstName,
+        middleInitial,
+        lastName,
+      ].filter(Boolean);
+      return nameComponents.join(' ');
+    } else {
+      return '';
+    }
   }
 }
