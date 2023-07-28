@@ -2,22 +2,13 @@
   <form class="contact-details-form" [formGroup]="form">
     <div class="contact-name-status-highlighted">
       <mat-form-field class="highlighted" appearance="outline">
-        <input
-          matInput
-          maxlength="40"
-          [placeholder]="getFullName()"
-          disabled
-        />
+        <mat-label>Contact Name</mat-label>
+        <input matInput maxlength="40" [value]="getContactName()" disabled />
       </mat-form-field>
 
       <mat-form-field class="highlighted" appearance="outline">
         <mat-label>Status</mat-label>
-        <input
-          matInput
-          placeholder="NEW"
-          maxlength="40"
-          disabled
-        />
+        <input matInput placeholder="NEW" maxlength="40" disabled />
       </mat-form-field>
     </div>
 
@@ -79,7 +70,7 @@
           matInput
           placeholder="Salutation"
           maxlength="5"
-          formControlName="contactDesignation"
+          formControlName="contactNamePrefix"
         />
       </mat-form-field>
       <mat-form-field appearance="outline">

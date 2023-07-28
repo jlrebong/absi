@@ -26,4 +26,8 @@ export class SummaryComponent implements OnInit  {
       this.onAgree.emit(e);
     });
   }
+
+  isDate(value: any): boolean {
+    return value instanceof Date && !isNaN(value.getTime());
+  }
 }
