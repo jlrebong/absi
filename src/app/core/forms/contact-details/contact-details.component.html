@@ -2,14 +2,10 @@
   <form class="contact-details-form" [formGroup]="form">
     <div class="contact-name-status-highlighted">
       <mat-form-field class="highlighted" appearance="outline">
-        <mat-label>Contact Name</mat-label>
         <input
           matInput
-          placeholder="Contact Name"
           maxlength="40"
-          placeholder="{{ form.get('contactNameFirst').value + ' ' + 
-                          form.get('contactNameLast').value
-                       }}"
+          [placeholder]="getFullName()"
           disabled
         />
       </mat-form-field>

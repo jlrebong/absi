@@ -35,14 +35,16 @@ export class AdjusterComponent {
     this.adjuster.contacts = e;
   }
 
+  onAgree(e) {
+
+  }
+
   getSummary() {
     let primary = null;
 
     if (this.adjuster.adjusterContacts && this.adjuster.adjusterContacts[0]) {
       primary = this.adjuster.adjusterContacts[0];
     }
-
-    console.log(this.adjuster);
 
     return {
       sections: [

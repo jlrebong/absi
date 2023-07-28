@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css'],
 })
-export class SummaryComponent {
+export class SummaryComponent implements OnInit  {
   @Input() title: string;
   @Input() header: string;
 
@@ -14,11 +14,16 @@ export class SummaryComponent {
   summary;
 
   @Output()
-  data = new EventEmitter();
+  onAgree = new EventEmitter();
 
   form = this.fb.group({
     agree: false,
   });
 
   constructor(private fb: FormBuilder) {}
+  ngOnInit(): void {
+    this.form.get('agree').statusChanges.subscribe(e=>{
+      this.onAgree.emit(e);
+    });
+  }
 }

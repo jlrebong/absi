@@ -40,4 +40,14 @@ export class ContactDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.form.valueChanges.subscribe((e) => this.data.emit(e));
   }
+
+  getFullName() {
+    if (this.form.get('contactNameFirst').value && 
+      this.form.get('contactNameLast').value) {
+        return this.form.get('contactNameLast').value + ', ' +
+        this.form.get('contactNameFirst').value;
+    } else {
+      return 'Contact Name';
+    }
+  }
 }
