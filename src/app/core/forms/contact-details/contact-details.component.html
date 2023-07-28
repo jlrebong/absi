@@ -98,14 +98,26 @@
       </mat-form-field>
     </div>
 
-    <mat-form-field appearance="outline" [style.width.px]="325">
-      <mat-label>Group of Email Address</mat-label>
-      <textarea
-        matInput
-        placeholder="Group of Email Address"
-        maxlength="40"
-        formControlName="contactGroupEmail"
-      ></textarea>
-    </mat-form-field>
+    <div class="groupEmail-primary">
+      <mat-form-field appearance="outline">
+        <mat-label>Group of Email Address</mat-label>
+        <textarea
+          matInput
+          placeholder="Group of Email Address"
+          maxlength="40"
+          formControlName="contactGroupEmail"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Primary</mat-label>
+        <mat-select formControlName="contactIsDefault">
+          <mat-option *ngFor="let p of primaryLabel" [value]="p.id">
+            {{
+              p.title === true ? "True" : p.title === false ? "False" : p.title
+            }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </form>
 </div>

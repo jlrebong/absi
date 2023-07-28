@@ -15,6 +15,17 @@ export class ContactDetailsComponent implements OnInit {
   @Output()
   data = new EventEmitter();
 
+  primaryLabel = [
+    {
+      id: 1,
+      title: true,
+    },
+    {
+      id: 0,
+      title: false,
+    },
+  ];
+
   form = this.fb.group({
     contactPk: '',
     contactId: '',
@@ -60,10 +71,15 @@ export class ContactDetailsComponent implements OnInit {
   }
 
   getFullName() {
-    if (this.form.get('contactNameFirst').value && 
-      this.form.get('contactNameLast').value) {
-        return this.form.get('contactNameLast').value + ', ' +
-        this.form.get('contactNameFirst').value;
+    if (
+      this.form.get('contactNameFirst').value &&
+      this.form.get('contactNameLast').value
+    ) {
+      return (
+        this.form.get('contactNameLast').value +
+        ', ' +
+        this.form.get('contactNameFirst').value
+      );
     } else {
       return 'Contact Name';
     }

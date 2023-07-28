@@ -23,6 +23,12 @@
     gap:0 5px;
 }
 
+.groupEmail-primary{
+    display:grid;
+    grid-template-columns: 325px 1fr;
+    gap: 0 5px;
+}
+
 mat-form-field.highlighted {
     background-color: #9ED9E7;
     border-radius:5px;
