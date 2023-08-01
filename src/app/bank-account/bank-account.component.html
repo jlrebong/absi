@@ -1,20 +1,37 @@
-<!-- <div class="information-container">
-  <app-information [labels]="labels"></app-information>
-  external: {{bank | json}}
+<div class="information-container">
+  <app-information
+    [maxLength]="maxLength"
+    [labels]="labels"
+    [information]="bank.information"
+    (data)="setInformation($event)"
+  ></app-information>
+  external:
+  <pre> {{ bank | json }}</pre>
 </div>
 
 <div class="location-container">
-  <app-location></app-location>
-  <app-phone-table></app-phone-table>
+  <app-location
+    [location]="bank.location"
+    (data)="setLocation($event)"
+  ></app-location>
+  <app-phone-table
+    [phoneList]="bank.phones"
+    (data)="setPhones($event)"
+  ></app-phone-table>
 </div>
 
 <div class="contact-table-container">
-  <app-contacts-table></app-contacts-table>
+  <app-contacts-table
+    [contactsList]="bank.contacts"
+    (data)="setContacts($event)"
+  ></app-contacts-table>
 </div>
 
 <div class="summary">
   <app-summary
     title="bank account summary"
-    header="bank account information"
+    header="bank information"
+    [summary]="getSummary()"
+    (onAgree)="onAgree($event)"
   ></app-summary>
-</div> -->
+</div>

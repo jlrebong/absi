@@ -1,62 +1,60 @@
 import { Component } from '@angular/core';
+import { SubAgentSubGrpClass } from '../core/models/branch-section';
 import { LABELS } from '../core/models/labels';
-import { Adjuster, AdjusterClass } from '../core/models/adjuster';
 
 @Component({
-  selector: 'app-adjuster',
-  templateUrl: './adjuster.component.html',
-  styleUrls: ['./adjuster.component.css'],
+  selector: 'app-branch-section',
+  templateUrl: './branch-section.component.html',
+  styleUrls: ['./branch-section.component.css'],
 })
-export class AdjusterComponent {
-  labels = LABELS['adjuster'];
-  adjuster: AdjusterClass;
-  maxLength = 255;
-
+export class BranchSectionComponent {
+  maxLength = 100;
+  labels = LABELS['subAgentSubGrp'];
+  subAgentSubGrp: SubAgentSubGrpClass;
   constructor() {
-    // This should be from the service
-    this.adjuster = new AdjusterClass();
+    this.subAgentSubGrp = new SubAgentSubGrpClass();
   }
-
   setInformation(e) {
-    this.adjuster.information = e;
+    this.subAgentSubGrp.information = e;
   }
-
   setLocation(e) {
-    this.adjuster.location = e;
+    this.subAgentSubGrp.location = e;
   }
-
   setPhones(e) {
-    this.adjuster.phones = e.value;
+    this.subAgentSubGrp.phones = e.value;
   }
-
   setContacts(e) {
-    console.log('SET CONTACTS',e);
-    this.adjuster.contacts = e;
+    this.subAgentSubGrp.contacts = e;
   }
-
   onAgree(e) {}
-
   getSummary() {
-    let primary = this.adjuster.primaryContact;
-
+    let primary = null;
+    if (
+      this.subAgentSubGrp.subAgentSubGrpContacts &&
+      this.subAgentSubGrp.subAgentSubGrpContacts[0]
+    ) {
+      primary = this.subAgentSubGrp.subAgentSubGrpContacts[0];
+    }
     return {
       sections: [
         {
-          title: 'Adjuster Information',
+          title: 'Branch Section Information',
           elements: [
-            { label: 'Code', value: this.adjuster.adjusterCode },
-            { label: 'Name', value: this.adjuster.adjusterName },
-            { label: 'Specialty', value: this.adjuster.adjusterSpecialty },
+            { label: 'Code', value: this.subAgentSubGrp.subAgentSubGrpCode },
+            { label: 'Name', value: this.subAgentSubGrp.subAgentSubGrpName },
           ],
         },
         {
           title: 'Address and Phone/s',
           elements: [
-            { label: 'Address', value: this.adjuster.adjusterAddress },
+            {
+              label: 'Address',
+              value: this.subAgentSubGrp.subAgentSubGrpAddress,
+            },
             {
               label: 'Phone/s',
-              value: this.adjuster.adjusterPhones?.map(
-                (e) => e.adjusterPhoneNumber
+              value: this.subAgentSubGrp.subAgentSubGrpPhones?.map(
+                (e) => e.subAgentSubGrpPhoneNumber
               ),
             },
           ],
@@ -76,7 +74,7 @@ export class AdjusterComponent {
           ],
         },
         {
-          title: '-',
+          title: '',
           elements: [
             { label: 'Email Address', value: primary?.contactEmail },
             { label: 'Group Email Address', value: primary?.contactGroupEmail },
@@ -86,15 +84,13 @@ export class AdjusterComponent {
       ],
     };
   }
-
   getPrimaryContactName(): string {
-    const primary = this.adjuster.adjusterContacts?.[0];
+    const primary = this.subAgentSubGrp.subAgentSubGrpContacts?.[0];
     if (primary) {
       const firstName = primary.contactNameFirst || '';
       const middleInitial = primary.contactNameMiddleInitial || '';
       const lastName = primary.contactNameLast || '';
       const salutation = primary.contactNamePrefix || '';
-
       // Join name components without extra spaces
       const nameComponents = [
         salutation,

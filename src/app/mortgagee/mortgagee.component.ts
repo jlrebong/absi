@@ -1,62 +1,60 @@
 import { Component } from '@angular/core';
+import { MortgageeClass } from '../core/models/mortgagee';
 import { LABELS } from '../core/models/labels';
-import { Adjuster, AdjusterClass } from '../core/models/adjuster';
 
 @Component({
-  selector: 'app-adjuster',
-  templateUrl: './adjuster.component.html',
-  styleUrls: ['./adjuster.component.css'],
+  selector: 'app-mortgagee',
+  templateUrl: './mortgagee.component.html',
+  styleUrls: ['./mortgagee.component.css'],
 })
-export class AdjusterComponent {
-  labels = LABELS['adjuster'];
-  adjuster: AdjusterClass;
-  maxLength = 255;
-
+export class MortgageeComponent {
+  maxLength = 100;
+  labels = LABELS['mortgagee'];
+  mortgagee: MortgageeClass;
   constructor() {
-    // This should be from the service
-    this.adjuster = new AdjusterClass();
+    this.mortgagee = new MortgageeClass();
   }
-
   setInformation(e) {
-    this.adjuster.information = e;
+    this.mortgagee.information = e;
   }
-
   setLocation(e) {
-    this.adjuster.location = e;
+    this.mortgagee.location = e;
   }
-
   setPhones(e) {
-    this.adjuster.phones = e.value;
+    this.mortgagee.phones = e.value;
   }
-
   setContacts(e) {
-    console.log('SET CONTACTS',e);
-    this.adjuster.contacts = e;
+    this.mortgagee.contacts = e;
   }
-
   onAgree(e) {}
-
   getSummary() {
-    let primary = this.adjuster.primaryContact;
-
+    let primary = null;
+    if (
+      this.mortgagee.mortgageeContacts &&
+      this.mortgagee.mortgageeContacts[0]
+    ) {
+      primary = this.mortgagee.mortgageeContacts[0];
+    }
     return {
       sections: [
         {
-          title: 'Adjuster Information',
+          title: 'Mortgagee/Obligee Information',
           elements: [
-            { label: 'Code', value: this.adjuster.adjusterCode },
-            { label: 'Name', value: this.adjuster.adjusterName },
-            { label: 'Specialty', value: this.adjuster.adjusterSpecialty },
+            { label: 'Code', value: this.mortgagee.mortgageeCode },
+            { label: 'Name', value: this.mortgagee.mortgageeName },
           ],
         },
         {
           title: 'Address and Phone/s',
           elements: [
-            { label: 'Address', value: this.adjuster.adjusterAddress },
+            {
+              label: 'Address',
+              value: this.mortgagee.mortgageeAddress,
+            },
             {
               label: 'Phone/s',
-              value: this.adjuster.adjusterPhones?.map(
-                (e) => e.adjusterPhoneNumber
+              value: this.mortgagee.mortgageePhones?.map(
+                (e) => e.mortgageePhoneNumber
               ),
             },
           ],
@@ -76,7 +74,7 @@ export class AdjusterComponent {
           ],
         },
         {
-          title: '-',
+          title: '',
           elements: [
             { label: 'Email Address', value: primary?.contactEmail },
             { label: 'Group Email Address', value: primary?.contactGroupEmail },
@@ -86,15 +84,13 @@ export class AdjusterComponent {
       ],
     };
   }
-
   getPrimaryContactName(): string {
-    const primary = this.adjuster.adjusterContacts?.[0];
+    const primary = this.mortgagee.mortgageeContacts?.[0];
     if (primary) {
       const firstName = primary.contactNameFirst || '';
       const middleInitial = primary.contactNameMiddleInitial || '';
       const lastName = primary.contactNameLast || '';
       const salutation = primary.contactNamePrefix || '';
-
       // Join name components without extra spaces
       const nameComponents = [
         salutation,

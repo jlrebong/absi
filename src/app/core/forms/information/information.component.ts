@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit,Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class InformationComponent implements OnInit {
   @Input()
   labels;
+
+  @Input() maxLength;
 
   @Input()
   information;
@@ -27,16 +29,14 @@ export class InformationComponent implements OnInit {
       name: [this.information.name, Validators.required],
       specialty: this.information.specialty,
     });
-    
-    this.form.valueChanges.subscribe(e => this.data.emit(e));
+
+    this.form.valueChanges.subscribe((e) => {
+      this.data.emit(e);
+    });
   }
 
   checkRequired(type): boolean {
     let code = this.form.get(type);
     return code.touched && !code.valid;
   }
-
-  
-
-  
 }

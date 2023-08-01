@@ -24,7 +24,7 @@ export var LABELS = {
     code: 'Bank Account Code',
     name: 'Bank Account Name',
   },
-  branch: {
+  subAgentSubGrp: {
     status: {
       label: 'Status: ',
       values: [
@@ -36,7 +36,7 @@ export var LABELS = {
     code: 'Branch Section Code',
     name: 'Branch Section Name',
   },
-  division: {
+  subAgentGrp: {
     status: {
       label: 'Status: ',
       values: [
@@ -45,8 +45,20 @@ export var LABELS = {
         { id: 'inactive', label: 'Inactive' },
       ],
     },
-    code: 'Division Section Code',
-    name: 'Division Section Name',
+    code: 'Division/Group Code',
+    name: 'Division/Group Name',
+  },
+  mortgagee: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    code: 'Mortgagee/Obligee Code',
+    name: 'Mortgagee/Obligee Name',
   },
   // contactDetails: {
   //   contactName: 'Contact Name',

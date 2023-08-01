@@ -2,35 +2,35 @@
   <app-information
     [maxLength]="maxLength"
     [labels]="labels"
-    [information]="adjuster.information"
+    [information]="mortgagee.information"
     (data)="setInformation($event)"
   ></app-information>
   external:
-  <pre> {{ adjuster | json }}</pre>
+  <pre> {{ mortgagee | json }}</pre>
 </div>
 
 <div class="location-container">
   <app-location
-    [location]="adjuster.location"
+    [location]="mortgagee.location"
     (data)="setLocation($event)"
   ></app-location>
   <app-phone-table
-    [phoneList]="adjuster.phones"
+    [phoneList]="mortgagee.phones"
     (data)="setPhones($event)"
   ></app-phone-table>
 </div>
 
 <div class="contact-table-container">
   <app-contacts-table
-    [contactsList]="adjuster.contacts"
+    [contactsList]="mortgagee.contacts"
     (data)="setContacts($event)"
   ></app-contacts-table>
 </div>
 
 <div class="summary">
   <app-summary
-    title="adjuster summary"
-    header="adjuster information"
+    title="Mortgagee/Obligee summary"
+    header="branch information"
     [summary]="getSummary()"
     (onAgree)="onAgree($event)"
   ></app-summary>

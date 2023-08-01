@@ -2,35 +2,35 @@
   <app-information
     [maxLength]="maxLength"
     [labels]="labels"
-    [information]="adjuster.information"
+    [information]="subAgentGrp.information"
     (data)="setInformation($event)"
   ></app-information>
   external:
-  <pre> {{ adjuster | json }}</pre>
+  <pre> {{ subAgentGrp | json }}</pre>
 </div>
 
 <div class="location-container">
   <app-location
-    [location]="adjuster.location"
+    [location]="subAgentGrp.location"
     (data)="setLocation($event)"
   ></app-location>
   <app-phone-table
-    [phoneList]="adjuster.phones"
+    [phoneList]="subAgentGrp.phones"
     (data)="setPhones($event)"
   ></app-phone-table>
 </div>
 
 <div class="contact-table-container">
   <app-contacts-table
-    [contactsList]="adjuster.contacts"
+    [contactsList]="subAgentGrp.contacts"
     (data)="setContacts($event)"
   ></app-contacts-table>
 </div>
 
 <div class="summary">
   <app-summary
-    title="adjuster summary"
-    header="adjuster information"
+    title="Division/Group summary"
+    header="branch information"
     [summary]="getSummary()"
     (onAgree)="onAgree($event)"
   ></app-summary>
