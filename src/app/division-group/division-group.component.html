@@ -1,0 +1,37 @@
+<div class="information-container">
+  <app-information
+    [maxLength]="maxLength"
+    [labels]="labels"
+    [information]="subAgentGrp.information"
+    (data)="setInformation($event)"
+  ></app-information>
+  external:
+  <pre> {{ subAgentGrp | json }}</pre>
+</div>
+
+<div class="location-container">
+  <app-location
+    [location]="subAgentGrp.location"
+    (data)="setLocation($event)"
+  ></app-location>
+  <app-phone-table
+    [phoneList]="subAgentGrp.phones"
+    (data)="setPhones($event)"
+  ></app-phone-table>
+</div>
+
+<div class="contact-table-container">
+  <app-contacts-table
+    [contactsList]="subAgentGrp.contacts"
+    (data)="setContacts($event)"
+  ></app-contacts-table>
+</div>
+
+<div class="summary">
+  <app-summary
+    title="branch section summary"
+    header="branch information"
+    [summary]="getSummary()"
+    (onAgree)="onAgree($event)"
+  ></app-summary>
+</div>

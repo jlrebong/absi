@@ -36,7 +36,7 @@ export var LABELS = {
     code: 'Branch Section Code',
     name: 'Branch Section Name',
   },
-  division: {
+  subAgentGrp: {
     status: {
       label: 'Status: ',
       values: [
