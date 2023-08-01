@@ -16,6 +16,7 @@ import { SummaryComponent } from './core/forms/summary/summary.component';
 import { ContactDetailsComponent } from './core/forms/contact-details/contact-details.component';
 import { AddcontactComponent } from './core/dialog/addcontact/addcontact.component';
 import { BankAccountComponent } from './bank-account/bank-account.component';
+import { BranchSectionComponent } from './branch-section/branch-section.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BankAccountComponent } from './bank-account/bank-account.component';
     ContactDetailsComponent,
     AddcontactComponent,
     BankAccountComponent,
+    BranchSectionComponent,
   ],
   imports: [
     MaterialModule,

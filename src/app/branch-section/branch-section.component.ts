@@ -1,62 +1,61 @@
 import { Component } from '@angular/core';
+import { SubAgentSubGrpClass } from '../core/models/branch-section';
 import { LABELS } from '../core/models/labels';
-import { BankClass } from '../core/models/bank';
 
 @Component({
-  selector: 'app-bank-account',
-  templateUrl: './bank-account.component.html',
-  styleUrls: ['./bank-account.component.css'],
+  selector: 'app-branch-section',
+  templateUrl: './branch-section.component.html',
+  styleUrls: ['./branch-section.component.css'],
 })
-export class BankAccountComponent {
+export class BranchSectionComponent {
   maxLength = 100;
-  labels = LABELS['bank'];
-  bank: BankClass;
-
+  labels = LABELS['subAgentSubGrp'];
+  subAgentSubGrp: SubAgentSubGrpClass;
   constructor() {
-    this.bank = new BankClass();
+    this.subAgentSubGrp = new SubAgentSubGrpClass();
   }
-
   setInformation(e) {
-    this.bank.information = e;
+    this.subAgentSubGrp.information = e;
   }
-
   setLocation(e) {
-    this.bank.location = e;
+    this.subAgentSubGrp.location = e;
   }
-
   setPhones(e) {
-    this.bank.phones = e.value;
+    this.subAgentSubGrp.phones = e.value;
   }
-
   setContacts(e) {
-    this.bank.contacts = e;
+    this.subAgentSubGrp.contacts = e;
   }
-
   onAgree(e) {}
-
   getSummary() {
     let primary = null;
-
-    if (this.bank.bankContacts && this.bank.bankContacts[0]) {
-      primary = this.bank.bankContacts[0];
+    if (
+      this.subAgentSubGrp.subAgentSubGrpContacts &&
+      this.subAgentSubGrp.subAgentSubGrpContacts[0]
+    ) {
+      primary = this.subAgentSubGrp.subAgentSubGrpContacts[0];
     }
-
     return {
       sections: [
         {
-          title: 'Bank Account Information',
+          title: 'Branch Section Information',
           elements: [
-            { label: 'Code', value: this.bank.bankCode },
-            { label: 'Name', value: this.bank.bankName },
+            { label: 'Code', value: this.subAgentSubGrp.subAgentSubGrpCode },
+            { label: 'Name', value: this.subAgentSubGrp.subAgentSubGrpName },
           ],
         },
         {
           title: 'Address and Phone/s',
           elements: [
-            { label: 'Address', value: this.bank.bankAddress },
+            {
+              label: 'Address',
+              value: this.subAgentSubGrp.subAgentSubGrpAddress,
+            },
             {
               label: 'Phone/s',
-              value: this.bank.bankPhones?.map((e) => e.bankPhoneNumber),
+              value: this.subAgentSubGrp.subAgentSubGrpPhones?.map(
+                (e) => e.subAgentSubGrpPhoneNumber
+              ),
             },
           ],
         },
@@ -85,15 +84,13 @@ export class BankAccountComponent {
       ],
     };
   }
-
   getPrimaryContactName(): string {
-    const primary = this.bank.bankContacts?.[0];
+    const primary = this.subAgentSubGrp.subAgentSubGrpContacts?.[0];
     if (primary) {
       const firstName = primary.contactNameFirst || '';
       const middleInitial = primary.contactNameMiddleInitial || '';
       const lastName = primary.contactNameLast || '';
       const salutation = primary.contactNamePrefix || '';
-
       // Join name components without extra spaces
       const nameComponents = [
         salutation,

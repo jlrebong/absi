@@ -24,7 +24,7 @@ export var LABELS = {
     code: 'Bank Account Code',
     name: 'Bank Account Name',
   },
-  branch: {
+  subAgentSubGrp: {
     status: {
       label: 'Status: ',
       values: [
