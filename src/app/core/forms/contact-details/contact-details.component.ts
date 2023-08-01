@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-details',
@@ -26,33 +26,36 @@ export class ContactDetailsComponent implements OnInit {
     },
   ];
 
-  form = this.fb.group({
-    contactPk: '',
-    contactId: '',
-    contactNameLast: ['', Validators.required],
-    contactNameFirst: ['', Validators.required],
-    contactNameMiddleInitial: '',
-    contactNamePrefix: ['', Validators.required],
-    contactNameSuffix: '',
-    contactDesignation: ['', Validators.required],
-    contactEmail: ['', [Validators.required, Validators.email]],
-    contactGroupEmail: ['', Validators.email],
-    contactBirthdate: '',
-    contactIsDefault: false,
-    contactStatus: ['NEW'],
-    contactCreatedBy: '',
-    contactDateCreated: '',
-    contactUpdatedBy: '',
-    contactDateUpdated: '',
-  });
+  form: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      contactPk: this.contact.contactPk,
+      contactId: this.contact.contactId,
+      contactNameLast: [this.contact.contactNameLast, Validators.required],
+      contactNameFirst: [this.contact.contactNameFirst, Validators.required],
+      contactNameMiddleInitial: this.contact.contactNameMiddleInitial,
+      contactNamePrefix: [this.contact.contactNamePrefix, Validators.required],
+      contactNameSuffix: this.contact.contactNameSuffix,
+      contactDesignation: [this.contact.contactDesignation, Validators.required],
+      contactEmail: [this.contact.contactEmail, [Validators.required, Validators.email]],
+      contactGroupEmail: [this.contact.contactGroupEmail, Validators.email],
+      contactBirthdate: this.contact.contactBirthdate,
+      contactIsDefault: this.contact.contactIsDefault,
+      contactStatus: this.contact.contactStatus || "NEW",
+      contactCreatedBy: this.contact.contactCreatedBy || '',
+      contactDateCreated: this.contact.contactDateCreated || Date.now(),
+      contactUpdatedBy: this.contact.contactUpdatedBy || '',
+      contactDateUpdated: Date.now(),
+    });
+
     this.form.valueChanges.subscribe((e) => {
       this.data.emit(e);
     });
   }
+
 
   getContactName(): string {
     const firstName = this.form.get('contactNameFirst').value || '';

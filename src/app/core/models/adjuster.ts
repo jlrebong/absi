@@ -81,6 +81,13 @@ export class AdjusterClass {
   set contacts(e) {
     this.adjusterContacts = e;
   }
+    get primaryContact() {
+        let primary = this.adjusterContacts?.filter(e=>e.contactIsDefault == true);
+        
+        let primaryContact = (primary && primary[0]) || null;
+        return primaryContact;
+    }
+
 }
 
 export interface Adjuster {
