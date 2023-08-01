@@ -45,8 +45,20 @@ export var LABELS = {
         { id: 'inactive', label: 'Inactive' },
       ],
     },
-    code: 'Division Section Code',
-    name: 'Division Section Name',
+    code: 'Division/Group Code',
+    name: 'Division/Group Name',
+  },
+  mortgagee: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    code: 'Mortgagee/Obligee Code',
+    name: 'Mortgagee/Obligee Name',
   },
   // contactDetails: {
   //   contactName: 'Contact Name',

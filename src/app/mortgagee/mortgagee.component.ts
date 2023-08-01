@@ -1,46 +1,47 @@
 import { Component } from '@angular/core';
+import { MortgageeClass } from '../core/models/mortgagee';
 import { LABELS } from '../core/models/labels';
-import { SubAgentGrpClass } from '../core/models/division-group';
+
 @Component({
-  selector: 'app-division-group',
-  templateUrl: './division-group.component.html',
-  styleUrls: ['./division-group.component.css'],
+  selector: 'app-mortgagee',
+  templateUrl: './mortgagee.component.html',
+  styleUrls: ['./mortgagee.component.css'],
 })
-export class DivisionGroupComponent {
+export class MortgageeComponent {
   maxLength = 100;
-  labels = LABELS['subAgentGrp'];
-  subAgentGrp: SubAgentGrpClass;
+  labels = LABELS['mortgagee'];
+  mortgagee: MortgageeClass;
   constructor() {
-    this.subAgentGrp = new SubAgentGrpClass();
+    this.mortgagee = new MortgageeClass();
   }
   setInformation(e) {
-    this.subAgentGrp.information = e;
+    this.mortgagee.information = e;
   }
   setLocation(e) {
-    this.subAgentGrp.location = e;
+    this.mortgagee.location = e;
   }
   setPhones(e) {
-    this.subAgentGrp.phones = e.value;
+    this.mortgagee.phones = e.value;
   }
   setContacts(e) {
-    this.subAgentGrp.contacts = e;
+    this.mortgagee.contacts = e;
   }
   onAgree(e) {}
   getSummary() {
     let primary = null;
     if (
-      this.subAgentGrp.subAgentGrpContacts &&
-      this.subAgentGrp.subAgentGrpContacts[0]
+      this.mortgagee.mortgageeContacts &&
+      this.mortgagee.mortgageeContacts[0]
     ) {
-      primary = this.subAgentGrp.subAgentGrpContacts[0];
+      primary = this.mortgagee.mortgageeContacts[0];
     }
     return {
       sections: [
         {
-          title: 'Division/Group Information',
+          title: 'Mortgagee/Obligee Information',
           elements: [
-            { label: 'Code', value: this.subAgentGrp.subAgentGrpCode },
-            { label: 'Name', value: this.subAgentGrp.subAgentGrpName },
+            { label: 'Code', value: this.mortgagee.mortgageeCode },
+            { label: 'Name', value: this.mortgagee.mortgageeName },
           ],
         },
         {
@@ -48,12 +49,12 @@ export class DivisionGroupComponent {
           elements: [
             {
               label: 'Address',
-              value: this.subAgentGrp.subAgentGrpAddress,
+              value: this.mortgagee.mortgageeAddress,
             },
             {
               label: 'Phone/s',
-              value: this.subAgentGrp.subAgentGrpPhones?.map(
-                (e) => e.subAgentGrpPhoneNumber
+              value: this.mortgagee.mortgageePhones?.map(
+                (e) => e.mortgageePhoneNumber
               ),
             },
           ],
@@ -84,7 +85,7 @@ export class DivisionGroupComponent {
     };
   }
   getPrimaryContactName(): string {
-    const primary = this.subAgentGrp.subAgentGrpContacts?.[0];
+    const primary = this.mortgagee.mortgageeContacts?.[0];
     if (primary) {
       const firstName = primary.contactNameFirst || '';
       const middleInitial = primary.contactNameMiddleInitial || '';

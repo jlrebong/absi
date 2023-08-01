@@ -18,6 +18,7 @@ import { AddcontactComponent } from './core/dialog/addcontact/addcontact.compone
 import { BankAccountComponent } from './bank-account/bank-account.component';
 import { BranchSectionComponent } from './branch-section/branch-section.component';
 import { DivisionGroupComponent } from './division-group/division-group.component';
+import { MortgageeComponent } from './mortgagee/mortgagee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { DivisionGroupComponent } from './division-group/division-group.componen
     BankAccountComponent,
     BranchSectionComponent,
     DivisionGroupComponent,
+    MortgageeComponent,
   ],
   imports: [
     MaterialModule,
