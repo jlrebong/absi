@@ -19,6 +19,7 @@ import { BankAccountComponent } from './bank-account/bank-account.component';
 import { BranchSectionComponent } from './branch-section/branch-section.component';
 import { DivisionGroupComponent } from './division-group/division-group.component';
 import { MortgageeComponent } from './mortgagee/mortgagee.component';
+import { MotorShopComponent } from './motor-shop/motor-shop.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { MortgageeComponent } from './mortgagee/mortgagee.component';
     BranchSectionComponent,
     DivisionGroupComponent,
     MortgageeComponent,
+    MotorShopComponent,
   ],
   imports: [
     MaterialModule,

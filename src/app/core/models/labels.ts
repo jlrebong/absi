@@ -60,6 +60,19 @@ export var LABELS = {
     code: 'Mortgagee/Obligee Code',
     name: 'Mortgagee/Obligee Name',
   },
+  motorShop: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    code: 'Motor Shop Code',
+    name: 'Motor Shop Name',
+    tin: 'TIN',
+  },
   // contactDetails: {
   //   contactName: 'Contact Name',
   //   status: 'Status',
