@@ -10,6 +10,7 @@ import { Adjuster, AdjusterClass } from '../core/models/adjuster';
 export class AdjusterComponent {
   labels = LABELS['adjuster'];
   adjuster: AdjusterClass;
+  maxLength = 255;
 
   constructor() {
     this.adjuster = new AdjusterClass();
@@ -31,9 +32,7 @@ export class AdjusterComponent {
     this.adjuster.contacts = e;
   }
 
-  onAgree(e) {
-
-  }
+  onAgree(e) {}
 
   getSummary() {
     let primary = null;

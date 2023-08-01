@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit,Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ export class LocationComponent implements OnInit {
   data = new EventEmitter();
 
   form: FormGroup;
-  
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -23,11 +23,11 @@ export class LocationComponent implements OnInit {
       country: this.location.country,
       province: this.location.province,
       city: this.location.city,
-      zip: this.location.zip
+      zip: this.location.zip,
     });
 
-    this.form.valueChanges.subscribe(e => this.data.emit(e));
+    this.form.valueChanges.subscribe((e) => {
+      this.data.emit(e);
+    });
   }
-
-
 }

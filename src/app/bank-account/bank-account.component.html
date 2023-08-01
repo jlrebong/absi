@@ -1,8 +1,15 @@
-<!-- <div class="information-container">
-  <app-information [labels]="labels"></app-information>
-  external: {{bank | json}}
+<div class="information-container">
+  <app-information
+    [maxLength]="maxLength"
+    [labels]="labels"
+    [information]="bank.information"
+    (data)="setInformation($event)"
+  ></app-information>
+  external:
+  <pre> {{ bank | json }}</pre>
 </div>
 
+<!-- 
 <div class="location-container">
   <app-location></app-location>
   <app-phone-table></app-phone-table>

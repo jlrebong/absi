@@ -1,5 +1,6 @@
 <div class="information-container">
   <app-information
+    [maxLength]="maxLength"
     [labels]="labels"
     [information]="adjuster.information"
     (data)="setInformation($event)"
