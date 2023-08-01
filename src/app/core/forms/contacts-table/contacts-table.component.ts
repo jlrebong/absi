@@ -32,6 +32,7 @@ export class ContactsTableComponent implements OnInit {
     const dialogRef = this.dialog.open(AddcontactComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
+      console.log('DATA',data);
       if (data) {
         // Push the new contact data only if it exists (i.e., not null or undefined)
         this.contacts.push(data);
@@ -40,21 +41,30 @@ export class ContactsTableComponent implements OnInit {
     });
   }
 
-  editDialog() {
+  editDialog(i) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = {};
+    dialogConfig.data = this.contacts[i];
+   
     const dialogRef = this.dialog.open(AddcontactComponent, dialogConfig);
+
 
     dialogRef
       .afterClosed()
-      .subscribe((data) => console.log('Dialog output:', data));
+      .subscribe((data) => {
+        if (data) {
+          // save our edits
+          this.contacts[i] = data;
+          // emit to save on master object
+          this.data.emit(this.contacts);
+        }
+      });
   }
 
   getContactName(contact: Contact): string {
-    const firstName = contact.contactNameFirst || '';
+    const firstName     = contact.contactNameFirst  || '';
     const middleInitial = contact.contactNameMiddleInitial || '';
-    const lastName = contact.contactNameLast || '';
-    const salutation = contact.contactNamePrefix || '';
+    const lastName      = contact.contactNameLast   || '';
+    const salutation    = contact.contactNamePrefix || '';
 
     // Join name components without extra spaces
     const nameComponents = [
@@ -62,7 +72,7 @@ export class ContactsTableComponent implements OnInit {
       firstName,
       middleInitial,
       lastName,
-    ].filter(Boolean);
+    ];
     return nameComponents.join(' ');
   }
 }

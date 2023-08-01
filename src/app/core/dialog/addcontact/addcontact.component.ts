@@ -31,6 +31,7 @@ export class AddcontactComponent implements OnInit, AfterViewInit {
     private dialogRef: MatDialogRef<AddcontactComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
+
     this.contact = data || ({} as Contact);
     this.contactPhones = this.contact.contactPhones;
   }
@@ -72,7 +73,6 @@ export class AddcontactComponent implements OnInit, AfterViewInit {
 
   save() {
     this.contact.contactPhones = this.contactPhones;
-    console.log(this.contact);
     this.dialogRef.close(this.contact);
   }
 

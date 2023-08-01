@@ -12,6 +12,7 @@ export class AdjusterComponent {
   adjuster: AdjusterClass;
 
   constructor() {
+    // This should be from the service
     this.adjuster = new AdjusterClass();
   }
 
@@ -28,6 +29,7 @@ export class AdjusterComponent {
   }
 
   setContacts(e) {
+    console.log('SET CONTACTS',e);
     this.adjuster.contacts = e;
   }
 
@@ -36,11 +38,7 @@ export class AdjusterComponent {
   }
 
   getSummary() {
-    let primary = null;
-
-    if (this.adjuster.adjusterContacts && this.adjuster.adjusterContacts[0]) {
-      primary = this.adjuster.adjusterContacts[0];
-    }
+    let primary = this.adjuster.primaryContact;
 
     return {
       sections: [
@@ -79,7 +77,7 @@ export class AdjusterComponent {
           ],
         },
         {
-          title: '',
+          title: '-',
           elements: [
             { label: 'Email Address', value: primary?.contactEmail },
             { label: 'Group Email Address', value: primary?.contactGroupEmail },

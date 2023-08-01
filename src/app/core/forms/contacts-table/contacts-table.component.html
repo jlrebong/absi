@@ -43,7 +43,7 @@
       </div>
       <div>{{ contact.contactIsDefault ? "True" : "False" }}</div>
       <div>{{ contact.contactStatus }}</div>
-      <div (click)="editDialog()"><mat-icon>edit</mat-icon><b></b></div>
+      <div (click)="editDialog(i)" class="editable"><mat-icon>edit</mat-icon><b></b></div>
     </div>
   </ng-container>
 </div>

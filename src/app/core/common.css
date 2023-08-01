@@ -9,7 +9,9 @@
     cursor:pointer;
 }
 
-
+::ng-deep .editable {
+    cursor: pointer;
+}
 
 ::ng-deep mat-form-field.adjuster_name_title .mat-mdc-form-field-subscript-wrapper {
     height: 0 !important;

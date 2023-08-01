@@ -6,7 +6,7 @@
   </div>
   <div class="section-container">
     <div class="section" *ngFor="let d of summary.sections; let i = index">
-      <div class="title" [class.sameColor]="!d.title">
+      <div class="title" [class.sameColor]="d.title=='-'">
         {{ d.title | titlecase }}
       </div>
       <div class="elements" *ngFor="let e of d.elements">

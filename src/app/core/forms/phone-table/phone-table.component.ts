@@ -37,10 +37,10 @@ export class PhoneTableComponent implements OnInit {
 
     this.phoneList?.forEach(e => {
       const PhoneForm = this.fb.group({
-        lineNo: e.lineNo,
-        type: e.type,
-        number: [e.number, Validators.pattern('^[0-9]+$')],
-        status: e.status 
+        lineNo: e.contactPhoneLineNo,
+        type: e.contactPhoneType || 'Mobile',
+        number: [e.contactPhoneNumber, Validators.pattern('^[0-9]+$')],
+        status: e.contactPhoneStatus || "NEW" 
       });
       this.phones.push(PhoneForm);
     });
@@ -55,7 +55,7 @@ export class PhoneTableComponent implements OnInit {
   addPhone() {
     const PhoneForm = this.fb.group({
       lineNo: null,
-      type: "",
+      type: 'Mobile',
       number: [null, Validators.pattern('^[0-9]+$')],
       status: "NEW" 
     });
