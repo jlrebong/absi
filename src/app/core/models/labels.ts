@@ -73,6 +73,19 @@ export var LABELS = {
     name: 'Motor Shop Name',
     tin: 'TIN',
   },
+  subAgentCorporate: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    name: 'Corporate Name',
+    tin: 'TIN',
+    accountNo: 'Account No.',
+  },
   // contactDetails: {
   //   contactName: 'Contact Name',
   //   status: 'Status',

@@ -76,5 +76,20 @@
         >{{ form.get("tin").value.length }}/{{ TINmaxLength }}</mat-hint
       >
     </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="labels.accountNo">
+      <mat-label>{{ labels.accountNo }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ labels.accountNo }}"
+        maxlength="{{ accountNoMaxLength }}"
+        formControlName="accountNo"
+      />
+      <mat-hint align="end"
+        >{{ form.get("accountNo").value.length }}/{{
+          accountNoMaxLength
+        }}</mat-hint
+      >
+    </mat-form-field>
   </form>
 </div>

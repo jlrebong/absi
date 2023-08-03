@@ -20,6 +20,8 @@ import { BranchSectionComponent } from './branch-section/branch-section.componen
 import { DivisionGroupComponent } from './division-group/division-group.component';
 import { MortgageeComponent } from './mortgagee/mortgagee.component';
 import { MotorShopComponent } from './motor-shop/motor-shop.component';
+import { SubAgentCorporateComponent } from './sub-agent/corporate/sub-agent-corporate.component';
+import { SubAgentIndividualComponent } from './sub-agent/individual/sub-agent-individual.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +39,8 @@ import { MotorShopComponent } from './motor-shop/motor-shop.component';
     DivisionGroupComponent,
     MortgageeComponent,
     MotorShopComponent,
+    SubAgentCorporateComponent,
+    SubAgentIndividualComponent,
   ],
   imports: [
     MaterialModule,

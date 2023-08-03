@@ -12,6 +12,7 @@ export class InformationComponent implements OnInit {
 
   @Input() maxLength;
   @Input() TINmaxLength;
+  @Input() accountNoMaxLength;
 
   @Input()
   information;
@@ -30,6 +31,7 @@ export class InformationComponent implements OnInit {
       name: [this.information.name, Validators.required],
       specialty: this.information.specialty,
       tin: this.information.tin,
+      accountNo: this.information.accountNo,
     });
 
     this.form.valueChanges.subscribe((e) => {
