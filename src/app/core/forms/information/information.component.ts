@@ -12,7 +12,7 @@ export class InformationComponent implements OnInit {
 
   @Input() maxLength;
   @Input() TINmaxLength;
-  @Input() accountNoMaxLength;
+  @Input() maxLength1;
 
   @Input()
   information;

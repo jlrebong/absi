@@ -9,7 +9,7 @@ import { SubAgentCorporateClass } from 'src/app/core/models/sub-agent-corporate'
 export class SubAgentCorporateComponent {
   labels = LABELS['subAgentCorporate'];
   subAgentCorporate: SubAgentCorporateClass;
-  maxLength = 255;
+  maxLength = 100;
   maxLength1 = 30;
 
   constructor() {

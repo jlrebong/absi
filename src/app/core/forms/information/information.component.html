@@ -69,11 +69,11 @@
       <input
         matInput
         placeholder="{{ labels.tin }}"
-        maxlength="{{ TINmaxLength }}"
+        maxlength="{{ maxLength1 }}"
         formControlName="tin"
       />
       <mat-hint align="end"
-        >{{ form.get("tin").value.length }}/{{ TINmaxLength }}</mat-hint
+        >{{ form.get("tin").value.length }}/{{ maxLength1 }}</mat-hint
       >
     </mat-form-field>
 
@@ -82,13 +82,11 @@
       <input
         matInput
         placeholder="{{ labels.accountNo }}"
-        maxlength="{{ accountNoMaxLength }}"
+        maxlength="{{ maxLength1 }}"
         formControlName="accountNo"
       />
       <mat-hint align="end"
-        >{{ form.get("accountNo").value.length }}/{{
-          accountNoMaxLength
-        }}</mat-hint
+        >{{ form.get("accountNo").value.length }}/{{ maxLength1 }}</mat-hint
       >
     </mat-form-field>
   </form>
