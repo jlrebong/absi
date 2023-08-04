@@ -22,6 +22,8 @@ import { MortgageeComponent } from './mortgagee/mortgagee.component';
 import { MotorShopComponent } from './motor-shop/motor-shop.component';
 import { SubAgentCorporateComponent } from './sub-agent/corporate/sub-agent-corporate.component';
 import { SubAgentIndividualComponent } from './sub-agent/individual/sub-agent-individual.component';
+import { PayeePayorCorporateComponent } from './payee-payor/corporate/payee-payor-corporate.component';
+import { PayeePayorIndividualComponent } from './payee-payor/individual/payee-payor-individual.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,8 @@ import { SubAgentIndividualComponent } from './sub-agent/individual/sub-agent-in
     MotorShopComponent,
     SubAgentCorporateComponent,
     SubAgentIndividualComponent,
+    PayeePayorCorporateComponent,
+    PayeePayorIndividualComponent,
   ],
   imports: [
     MaterialModule,

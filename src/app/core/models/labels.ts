@@ -105,6 +105,20 @@ export var LABELS = {
     tin: 'TIN',
     accountNo: 'Account No.',
   },
+  payeePayorCorporate: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    name: 'Corporate Name',
+    industry: 'Industry',
+    tin: 'TIN',
+    accountNo: 'Account No.',
+  },
   // contactDetails: {
   //   contactName: 'Contact Name',
   //   status: 'Status',

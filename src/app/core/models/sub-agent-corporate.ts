@@ -6,6 +6,7 @@ export interface SubAgentCorporateClass extends SubAgentCorporate {}
 export class SubAgentCorporateClass {
   get information() {
     return {
+      status: this.subAgentStatus || 'new',
       name: this.subAgentCorporateName || '',
       tin: this.subAgentTin || '',
       accountNo: this.subAgentAccountNo || '',
@@ -13,6 +14,7 @@ export class SubAgentCorporateClass {
   }
 
   set information(e) {
+    this.subAgentStatus = e.status;
     this.subAgentCorporateName = e.name;
     this.subAgentTin = e.tin;
     this.subAgentAccountNo = e.accountNo;

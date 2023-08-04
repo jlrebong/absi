@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-information',
@@ -37,6 +38,7 @@ export class InformationComponent implements OnInit {
       namePrefix: [this.information.namePrefix, Validators.required],
       nameSuffix: this.information.nameSuffix,
       email: this.information.email,
+      industry: this.information.industry,
     });
 
     this.form.valueChanges.subscribe((e) => {

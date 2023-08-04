@@ -170,6 +170,21 @@
       >
     </mat-form-field>
 
+    <mat-form-field
+      class="industry"
+      appearance="outline"
+      *ngIf="labels.industry"
+    >
+      <mat-label>{{ labels.industry }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ labels.industry }} *"
+        maxlength="20"
+        formControlName="industry"
+      />
+      <mat-icon>list</mat-icon>
+    </mat-form-field>
+
     <mat-form-field appearance="outline" *ngIf="labels.specialty">
       <mat-label>{{ labels.specialty }}</mat-label>
       <textarea

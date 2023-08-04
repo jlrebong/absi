@@ -6,6 +6,7 @@ export interface SubAgentIndividualClass extends SubAgentIndividual {}
 export class SubAgentIndividualClass {
   get information() {
     return {
+      status: this.subAgentStatus || 'new',
       nameLast: this.subAgentNameLast || '',
       nameFirst: this.subAgentNameFirst || '',
       nameMiddleInitial: this.subAgentNameMiddleInitial || '',
@@ -18,6 +19,7 @@ export class SubAgentIndividualClass {
   }
 
   set information(e) {
+    this.subAgentStatus = e.status;
     this.subAgentNameLast = e.nameLast;
     this.subAgentNameFirst = e.nameFirst;
     this.subAgentNameMiddleInitial = e.nameMiddleInitial;

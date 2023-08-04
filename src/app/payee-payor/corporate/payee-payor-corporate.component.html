@@ -1,0 +1,41 @@
+<div class="information-container">
+  <app-information
+    [maxLength]="maxLength"
+    [maxLength1]="maxLength1"
+    [labels]="labels"
+    [information]="payeePayorCorporate.information"
+    (data)="setInformation($event)"
+  ></app-information>
+  <pre>
+    {{ payeePayorCorporate | json }}
+  
+   </pre
+  >
+</div>
+
+<div class="location-container">
+  <app-location
+    [location]="payeePayorCorporate.location"
+    (data)="setLocation($event)"
+  ></app-location>
+  <app-phone-table
+    [phoneList]="payeePayorCorporate.phones"
+    (data)="setPhones($event)"
+  ></app-phone-table>
+</div>
+
+<div class="contact-table-container">
+  <app-contacts-table
+    [contactsList]="payeePayorCorporate.contacts"
+    (data)="setContacts($event)"
+  ></app-contacts-table>
+</div>
+
+<div class="summary">
+  <app-summary
+    title="account refferer summary"
+    header="payeePayorCorporate information"
+    [summary]="getSummary()"
+    (onAgree)="onAgree($event)"
+  ></app-summary>
+</div>
