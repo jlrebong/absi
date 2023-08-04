@@ -19,7 +19,7 @@
         placeholder="{{
           form.get('name').value ||
             labels.name ||
-            form.get('name').value ||
+            getFullName() ||
             labels.fullName
         }}"
         disabled
@@ -81,7 +81,7 @@
 
     <div
       [class.middleInitial-salutation-suffix]="
-        labels.salutation && labels.nameMiddleInitial && labels.nameSuffix
+        labels.namePrefix && labels.nameMiddleInitial && labels.nameSuffix
       "
     >
       <mat-form-field
@@ -102,19 +102,19 @@
       </mat-form-field>
 
       <mat-form-field
-        [class.required]="checkRequired('salutation')"
+        [class.required]="checkRequired('namePrefix')"
         appearance="outline"
-        *ngIf="labels.salutation"
+        *ngIf="labels.namePrefix"
       >
-        <mat-label>{{ labels.salutation }}</mat-label>
+        <mat-label>{{ labels.namePrefix }}</mat-label>
         <input
           matInput
-          placeholder="{{ labels.salutation }} *"
+          placeholder="{{ labels.namePrefix }} *"
           maxlength="{{ 15 }}"
-          formControlName="salutation"
+          formControlName="namePrefix"
         />
         <mat-hint align="end"
-          >{{ form.get("salutation").value.length }}/{{ 15 }}</mat-hint
+          >{{ form.get("namePrefix").value.length }}/{{ 15 }}</mat-hint
         >
       </mat-form-field>
 

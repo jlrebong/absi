@@ -99,7 +99,7 @@ export var LABELS = {
     nameLast: 'Last Name',
     nameFirst: 'First Name',
     nameMiddleInitial: 'Middle Initial',
-    salutation: 'Salutation',
+    namePrefix: 'Salutation',
     nameSuffix: 'Suffix',
     email: 'Email Address',
     tin: 'TIN',

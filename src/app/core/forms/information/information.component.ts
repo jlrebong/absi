@@ -34,7 +34,7 @@ export class InformationComponent implements OnInit {
       nameLast: [this.information.nameLast, Validators.required],
       nameFirst: [this.information.nameFirst, Validators.required],
       nameMiddleInitial: this.information.nameMiddleInitial,
-      salutation: [this.information.salutation, Validators.required],
+      namePrefix: [this.information.namePrefix, Validators.required],
       nameSuffix: this.information.nameSuffix,
       email: this.information.email,
     });
@@ -47,5 +47,23 @@ export class InformationComponent implements OnInit {
   checkRequired(type): boolean {
     let code = this.form.get(type);
     return code.touched && !code.valid;
+  }
+
+  getFullName(): string {
+    const firstName = this.information.nameFirst || '';
+    const middleInitial = this.information.nameMiddleInitial || '';
+    const lastName = this.information.nameLast || '';
+    const namePrefix = this.information.namePrefix || '';
+    const nameSuffix = this.information.nameSuffix || '';
+
+    // Join name components without extra spaces
+    const nameComponents = [
+      namePrefix,
+      firstName,
+      middleInitial,
+      lastName,
+      nameSuffix,
+    ].filter(Boolean);
+    return nameComponents.join(' ');
   }
 }

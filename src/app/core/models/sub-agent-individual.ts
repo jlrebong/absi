@@ -9,7 +9,7 @@ export class SubAgentIndividualClass {
       nameLast: this.subAgentNameLast || '',
       nameFirst: this.subAgentNameFirst || '',
       nameMiddleInitial: this.subAgentNameMiddleInitial || '',
-      salutation: this.subAgentNamePrefix || '',
+      namePrefix: this.subAgentNamePrefix || '',
       nameSuffix: this.subAgentNameSuffix || '',
       email: this.subAgentEmail || '',
       tin: this.subAgentTin || '',
@@ -21,7 +21,7 @@ export class SubAgentIndividualClass {
     this.subAgentNameLast = e.nameLast;
     this.subAgentNameFirst = e.nameFirst;
     this.subAgentNameMiddleInitial = e.nameMiddleInitial;
-    this.subAgentNamePrefix = e.salutation;
+    this.subAgentNamePrefix = e.namePrefix;
     this.subAgentNameSuffix = e.nameSuffix;
     this.subAgentEmail = e.email;
     this.subAgentTin = e.tin;
