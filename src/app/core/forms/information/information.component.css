@@ -21,3 +21,15 @@ textarea {
     padding: 10px;
     outline:none;
 }
+
+.middleInitial-salutation-suffix{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 5px;
+}
+
+.tin-accountNo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5px;
+}

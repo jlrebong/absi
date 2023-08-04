@@ -9,10 +9,19 @@
       >
     </mat-radio-group>
 
-    <mat-form-field class="adjuster_name_title" appearance="outline">
+    <mat-form-field
+      class="adjuster_name_title"
+      appearance="outline"
+      *ngIf="labels.name || labels.fullName"
+    >
       <input
         matInput
-        placeholder="{{ form.get('name').value || labels.name }}"
+        placeholder="{{
+          form.get('name').value ||
+            labels.name ||
+            form.get('name').value ||
+            labels.fullName
+        }}"
         disabled
       />
     </mat-form-field>
@@ -32,6 +41,116 @@
         required
       />
       <mat-hint align="end">{{ form.get("code").value.length }}/20</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field
+      [class.required]="checkRequired('nameLast')"
+      appearance="outline"
+      *ngIf="labels.nameLast"
+    >
+      <mat-label>{{ labels.nameLast }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ labels.nameLast }} *"
+        maxlength="{{ 255 }}"
+        formControlName="nameLast"
+        required
+      />
+      <mat-hint align="end"
+        >{{ form.get("nameLast").value.length }}/{{ 255 }}</mat-hint
+      >
+    </mat-form-field>
+
+    <mat-form-field
+      [class.required]="checkRequired('nameFirst')"
+      appearance="outline"
+      *ngIf="labels.nameFirst"
+    >
+      <mat-label>{{ labels.nameFirst }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ labels.nameFirst }} *"
+        maxlength="{{ 30 }}"
+        formControlName="nameFirst"
+        required
+      />
+      <mat-hint align="end"
+        >{{ form.get("nameFirst").value.length }}/{{ 30 }}</mat-hint
+      >
+    </mat-form-field>
+
+    <div
+      [class.middleInitial-salutation-suffix]="
+        labels.salutation && labels.nameMiddleInitial && labels.nameSuffix
+      "
+    >
+      <mat-form-field
+        [class.required]="checkRequired('nameMiddleInitial')"
+        appearance="outline"
+        *ngIf="labels.nameMiddleInitial"
+      >
+        <mat-label>{{ labels.nameMiddleInitial }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ labels.nameMiddleInitial }}"
+          maxlength="{{ 2 }}"
+          formControlName="nameMiddleInitial"
+        />
+        <mat-hint align="end"
+          >{{ form.get("nameMiddleInitial").value.length }}/{{ 2 }}</mat-hint
+        >
+      </mat-form-field>
+
+      <mat-form-field
+        [class.required]="checkRequired('salutation')"
+        appearance="outline"
+        *ngIf="labels.salutation"
+      >
+        <mat-label>{{ labels.salutation }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ labels.salutation }} *"
+          maxlength="{{ 15 }}"
+          formControlName="salutation"
+        />
+        <mat-hint align="end"
+          >{{ form.get("salutation").value.length }}/{{ 15 }}</mat-hint
+        >
+      </mat-form-field>
+
+      <mat-form-field
+        [class.required]="checkRequired('nameSuffix')"
+        appearance="outline"
+        *ngIf="labels.nameSuffix"
+      >
+        <mat-label>{{ labels.nameSuffix }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ labels.nameSuffix }} *"
+          maxlength="{{ 20 }}"
+          formControlName="nameSuffix"
+        />
+        <mat-hint align="end"
+          >{{ form.get("nameSuffix").value.length }}/{{ 20 }}</mat-hint
+        >
+      </mat-form-field>
+    </div>
+
+    <mat-form-field
+      [class.required]="checkRequired('email')"
+      appearance="outline"
+      *ngIf="labels.email"
+    >
+      <mat-label>{{ labels.email }}</mat-label>
+      <input
+        matInput
+        placeholder="{{ labels.email }}"
+        maxlength="{{ 300 }}"
+        formControlName="email"
+      />
+      <mat-hint align="end"
+        >{{ form.get("email").value.length }}/{{ 300 }}</mat-hint
+      >
     </mat-form-field>
 
     <mat-form-field
@@ -64,30 +183,63 @@
       >
     </mat-form-field>
 
-    <mat-form-field appearance="outline" *ngIf="labels.tin">
-      <mat-label>{{ labels.tin }}</mat-label>
-      <input
-        matInput
-        placeholder="{{ labels.tin }}"
-        maxlength="{{ maxLength1 }}"
-        formControlName="tin"
-      />
-      <mat-hint align="end"
-        >{{ form.get("tin").value.length }}/{{ maxLength1 }}</mat-hint
-      >
-    </mat-form-field>
+    <div
+      *ngIf="labels.tin && labels.accountNo && labels.fullName; else fallback"
+      [class.tin-accountNo]="true"
+    >
+      <mat-form-field appearance="outline" *ngIf="labels.tin">
+        <mat-label>{{ labels.tin }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ labels.tin }}"
+          maxlength="30"
+          formControlName="tin"
+        />
+        <mat-hint align="end"
+          >{{ form.get("tin").value.length }}/{{ 30 }}</mat-hint
+        >
+      </mat-form-field>
 
-    <mat-form-field appearance="outline" *ngIf="labels.accountNo">
-      <mat-label>{{ labels.accountNo }}</mat-label>
-      <input
-        matInput
-        placeholder="{{ labels.accountNo }}"
-        maxlength="{{ maxLength1 }}"
-        formControlName="accountNo"
-      />
-      <mat-hint align="end"
-        >{{ form.get("accountNo").value.length }}/{{ maxLength1 }}</mat-hint
-      >
-    </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="labels.accountNo">
+        <mat-label>{{ labels.accountNo }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ labels.accountNo }}"
+          maxlength="30"
+          formControlName="accountNo"
+        />
+        <mat-hint align="end"
+          >{{ form.get("accountNo").value.length }}/{{ 30 }}</mat-hint
+        >
+      </mat-form-field>
+    </div>
+
+    <ng-template #fallback>
+      <mat-form-field appearance="outline" *ngIf="labels.tin">
+        <mat-label>{{ labels.tin }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ labels.tin }}"
+          maxlength="30"
+          formControlName="tin"
+        />
+        <mat-hint align="end"
+          >{{ form.get("tin").value.length }}/{{ 30 }}</mat-hint
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" *ngIf="labels.accountNo">
+        <mat-label>{{ labels.accountNo }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ labels.accountNo }}"
+          maxlength="30"
+          formControlName="accountNo"
+        />
+        <mat-hint align="end"
+          >{{ form.get("accountNo").value.length }}/{{ 30 }}</mat-hint
+        >
+      </mat-form-field>
+    </ng-template>
   </form>
 </div>

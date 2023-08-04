@@ -86,6 +86,25 @@ export var LABELS = {
     tin: 'TIN',
     accountNo: 'Account No.',
   },
+  subAgentIndividual: {
+    status: {
+      label: 'Status: ',
+      values: [
+        { id: 'new', label: 'New' },
+        { id: 'active', label: 'Active' },
+        { id: 'inactive', label: 'Inactive' },
+      ],
+    },
+    fullName: 'Account Referrer Name',
+    nameLast: 'Last Name',
+    nameFirst: 'First Name',
+    nameMiddleInitial: 'Middle Initial',
+    salutation: 'Salutation',
+    nameSuffix: 'Suffix',
+    email: 'Email Address',
+    tin: 'TIN',
+    accountNo: 'Account No.',
+  },
   // contactDetails: {
   //   contactName: 'Contact Name',
   //   status: 'Status',
